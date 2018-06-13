@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="keywords" content="sistema de gestão, escolar, educação" />
+<meta name="description" content="Sistema de Gestão Escolar" />
+<title>#{get 'title' /}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="@{'/public/bootstrap/vendor/bootstrap/css/bootstrap.min.css'}" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="@{'/public/bootstrap/vendor/font-awesome/css/font-awesome.min.css'}" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="@{'/public/bootstrap/vendor/datatables/dataTables.bootstrap4.css'}" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="@{'/public/bootstrap/css/sb-admin.css'}" rel="stylesheet">
+<link rel="icon" href="@{'/public/images/favicon-sge.png'}" />
+</head>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navegação-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
+		<a class="navbar-brand" href="#">SGE - Sistema de Gestão
+			Escolar</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Link"><a class="nav-link" href="#"> <span class="nav-link-text"> <img id="profile-img" style="border-radius: 50%; width: 50%;"  class="profile-img-card"
+				src="http://2.bp.blogspot.com/-KqmTzSF5VyE/ULPGg5lAxcI/AAAAAAAACS4/UR8RIBe5aGk/s1600/foto+3por4.jpeg" /></span>
+				</a></li>
+				
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Link"><a class="nav-link" href="#"> <span class="nav-link-text"></span>
+				</a></li>
+				
+				
+				
+				
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Link"><a class="nav-link" href="@{SGE.portal_secretaria}"> <i
+						class="fa fa-fw fa-home"></i> <span class="nav-link-text">Início</span>
+				</a></li>
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Components"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseComponents" data-parent="#exampleAccordion"> <i
+						class="fa fa-fw fa-file"></i> <span class="nav-link-text">Meus
+							Dados</span>
+				</a>
+					<ul class="sidenav-second-level collapse" id="collapseComponents">
+						<li><a href="#">Dados Pessoais</a></li>
+						<li><a href="#">Dados acadêmicos</a></li>
+					</ul></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages" data-parent="#exampleAccordion"> <i
+						class="fa fa-fw fa-pencil"></i> <span class="nav-link-text">Cadastro</span>
+				</a>
+					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
+						<li><a href="cadastro_aluno">Cadastrar Aluno</a></li>
+						<li><a href="cadastro_professor">Cadastrar Professor</a></li>
+						<li><a href="cadastro_turma">Cadastrar Turma</a></li>
+						<li><a href="cadastro_disciplina">Cadastrar Disciplina</a></li>
+					</ul></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Menu Levels"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseMulti" data-parent="#exampleAccordion"> <i
+						class="fa fa-fw fa-tasks"></i> <span class="nav-link-text">Listagem</span>
+				</a>
+					<ul class="sidenav-second-level collapse" id="collapseMulti">
+						<li><a href="listarAluno">Listar Aluno</a></li>
+						<li><a href="listarProfessor">Listar Professor</a></li>
+						<li><a href="listarTurma">Listar Turma</a></li>
+						<li><a href="listarDisciplina">Listar Disciplina</a></li>
+					</ul></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Link"><a class="nav-link" href="@{Application.index}"> <i
+						class="fa fa-fw fa-link"></i> <span class="nav-link-text">Sair</span>
+				</a></li>
+			</ul>
+
+			
+		</div>
+	</nav>
+			#{if flash.success}
+		       		<div class="alert alert-success">
+						<p align="center">${flash.success.raw()}</p>
+					</div>
+				#{/if}
+				
+				
+				<!-- Mensagem de erro -->
+				
+				#{if flash.error}
+					<div class="alert alert-danger">
+						<p align="center">${flash.error.raw()}</p>
+					</div>
+		#{/if}
+	#{doLayout /}
+      <!-- Icon Cards-->
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap core JavaScript-->
+    <script src="@{'/public/bootstrap/vendor/jquery/jquery.min.js'}"></script>
+    <script src="@{'/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="@{'/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js'}"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="@{'/public/bootstrap/vendor/chart.js/Chart.min.js'}"></script>
+    <script src="@{'/public/bootstrap/vendor/datatables/jquery.dataTables.js'}"></script>
+    <script src="@{'/public/bootstrap/vendor/datatables/dataTables.bootstrap4.js'}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="@{'/public/bootstrap/js/sb-admin.min.js'}"></script>
+    <!-- Custom scripts for this page-->
+    <script src="@{'/public/bootstrap/js/sb-admin-datatables.min.js'}"></script>
+    <script src="@{'/public/bootstrap/js/sb-admin-charts.min.js'}"></script>
+    
+    #{get 'moreScripts' /}
+    </div>
+</body>
+
+</html>
+        
+     
