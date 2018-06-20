@@ -17,18 +17,24 @@
 				<select name="aluno.turma.id" class="form-control">
 				<option>---Selecione a Turma---</option>
 				#{list items: turmas, as:'turma'}
-					<option value="${turma?.id}">${turma.nome_turma}</option>
+					<option value="${turma?.id}">${turma.nomeTurma}</option>
 				#{/list}
 				</select><br />
+				<label>Disciplinas</label><br/>
+				#{list items: disciplinas, as:'disciplina'}
+					<label>${disciplina?.nomeDisciplina}</label>
+					<input type="checkbox" name="aluno.disciplina.id" value="${disciplina?.id}">
+				#{/list}<br/>
 				<label>Rua: </label>
 				<input type="text" name="aluno.rua" value="${aluno?.rua}" class="form-control"><br />
 				<label>Bairro: </label>
 				<input type="text" name="aluno.bairro" value="${aluno?.bairro}" class="form-control"><br />	
 				<label>Data de Nascimento: </label>
-				<input type="date" name="aluno.certificado_de_nascimento" value="${aluno?.certificado_de_nascimento}" class="form-control"><br />	
+				<input type="date" name="aluno.dataNascimento" value="${aluno?.dataNascimento}" class="form-control"><br />	
 				<button type="submit" class="btn btn-success">Cadastrar</button>
 				<button type="reset" class="btn btn-danger">Limpar Campos</button>
 			</form>
+			<br />
 		</div>
 	</div>
 	<!-- /.container-fluid-->

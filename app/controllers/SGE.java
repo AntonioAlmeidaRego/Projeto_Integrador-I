@@ -17,18 +17,18 @@ public class SGE extends Controller{
     }
     
     public static void login(Usuario usuario) {
-    	List<Aluno> aluno = Alunos.buscaAlunoBD(usuario.getUsuario(), usuario.getSenha());
-    	List<Professor> professor = Professores.buscaProfessorBD(usuario.getUsuario(), usuario.getSenha());
-    	List<Secretaria> secretaria = Secretarias.buscaSecretariaBD(usuario.getUsuario(), usuario.getSenha());
+    	Aluno aluno = Alunos.buscaAlunoBD(usuario.getUsuario(), usuario.getSenha());
+    	Professor professor = Professores.buscaProfessorBD(usuario.getUsuario(), usuario.getSenha());
+    	Secretaria secretaria = Secretarias.buscaSecretariaBD(usuario.getUsuario(), usuario.getSenha());
     	String admistrador = "admin";
     	String senha = "admin";
     	if(admistrador.equals(usuario.getUsuario()) && senha.equals(usuario.getSenha())) {
     		renderTemplate("Administradores/portal_admin.html",admistrador);
-    	}else if(!secretaria.isEmpty()) {
+    	}else if(secretaria != null) {
     		renderTemplate("Secretarias/portal_secretaria.html",secretaria);
-    	}else if(!aluno.isEmpty()){
+    	}else if(aluno != null){
     		renderTemplate("Alunos/portal_aluno.html",aluno);
-    	}else if(!professor.isEmpty()) {
+    	}else if(professor != null) {
     		renderTemplate("Professores/portal_professor.html",professor);
     	}else {
     		flash.error("USUÁRIO OU SENHA INVÁLIDOS");

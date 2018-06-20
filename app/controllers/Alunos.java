@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Aluno;
+import models.Disciplina;
 import models.Professor;
 import models.Turma;
 import models.Usuario;
@@ -15,9 +16,16 @@ public class Alunos extends Controller{
 		render(aluno);
     }
 	
+	public static void cadastroDisciplinaAluno(){
+		List<Disciplina> disciplinas = Disciplina.findAll();
+		List<Aluno> alunos = Aluno.findAll();
+		render(disciplinas,alunos);
+	}
+	
 	public static void cadastro_aluno(){
 		List<Turma> turmas = Turma.findAll();
-		render(turmas);
+		List<Disciplina> disciplinas = Disciplina.findAll();
+		render(turmas, disciplinas);
 	}
 	
 	
@@ -30,6 +38,21 @@ public class Alunos extends Controller{
     		listarAluno();
     	}
     }
+	
+	public static void save(Aluno aluno) {
+		if(aluno.save() != null) {
+    		flash.success("Aluno salvo com sucesso!");
+    		listarAlunoDisciplina();
+    	}else {
+    		flash.error("Aluno não foi salvo, tente novamente");
+    		listarAlunoDisciplina();
+    	}
+	}
+	
+		public static void listarAlunoDisciplina() {
+			List<Aluno> alunos = Aluno.findAll();
+			render(alunos);
+		}
 	
 	 	public static void listarAluno(){
 	    	List<Aluno> alunos = Aluno.findAll();
@@ -44,8 +67,8 @@ public class Alunos extends Controller{
 	    
 	  
 	    
-	    public static List<Aluno> buscaAlunoBD(String matricula, String senha) {
-	    	return Aluno.find("matricula = ? and senha = ?", matricula, senha).fetch();
+	    public static Aluno buscaAlunoBD(String matricula, String senha) {
+	    	return Aluno.find("matricula = ? and senha = ?", matricula, senha).first();
 	    }
 	    
 	    public static void pesquisarProfessor(String busca) {
@@ -72,7 +95,8 @@ public class Alunos extends Controller{
 		public static void editarAluno(Long id) {
 			Aluno aluno = Aluno.findById(id);
 			List<Turma> turmas = Turma.findAll();
-			renderTemplate("Alunos/cadastro_aluno.html",aluno, turmas);
+			List<Disciplina> disciplinas = Disciplina.findAll();
+			renderTemplate("Alunos/cadastro_aluno.html",aluno, turmas, disciplinas);
 		}
 		
 		public static void main_portal_aluno(Aluno aluno) {

@@ -28,7 +28,7 @@ public class Turmas extends Controller{
     	render(turmas);
      } 
 	
-	public static void editarTurma(Long id) {
+	public static void editarTurma(long id) {
 		Turma turma = Turma.findById(id);
 		renderTemplate("SGE/cadastro_turma.html",turma);
 	}
@@ -38,17 +38,8 @@ public class Turmas extends Controller{
     	return turmas;
     }
 	
-	public static Turma buscaTurma(long id) {
-    	for(Turma turma : getListaTurma()) {
-    		if(turma.getId() == id) {
-    			return turma;
-    		}
-    	}
-    	return null;
-    }
-	
 	public static void removerTurma(long id) {
-    	Turma turma = buscaTurma(id);
+    	Turma turma = Turma.findById(id);
     	if(turma.delete() != null) {
     		flash.success("Turma removida com sucesso!");
     		listarTurma();

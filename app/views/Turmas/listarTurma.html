@@ -13,8 +13,8 @@
 			</tr>
 	#{list items: turmas, as:'turma'}
 		<tr>
-			<td>${turma.nome_turma}</td>
-			<td>${turma.numero_sala}</td>
+			<td>${turma.nomeTurma}</td>
+			<td>${turma.numeroSala}</td>
 			<td>${turma.turno}</td>
 			<td><a href="@{Turmas.editarTurma(turma.id)}" class="btn btn-primary">Alterar Turma</a></td>
 			<td><a href="removerTurma?id=${turma.id}" class="btn btn-danger">Remover Turma</a></td>

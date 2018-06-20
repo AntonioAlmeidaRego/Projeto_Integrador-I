@@ -37,22 +37,22 @@ public class Professores extends Controller{
     	
     }
 	
-	public static List<Professor> getListaProfessor(){
+	/*public static List<Professor> getListaProfessor(){
     	List<Professor> professores = Professor.findAll();
     	return professores;
-    }
+    }*/
 	
-	public static Professor buscaProfessor(long id) {
+	/*public static Professor buscaProfessor(long id) {
     	for(Professor professor : getListaProfessor()) {
     		if(professor.getId() == id) {
     			return professor;
     		}
     	}
     	return null;
-    }
+    }*/
 	
-	public static List<Professor> buscaProfessorBD(String matricula, String senha) {
-		return Professor.find("matricula = ? and senha = ?", matricula, senha).fetch();
+	public static Professor buscaProfessorBD(String matricula, String senha) {
+		return Professor.find("matricula = ? and senha = ?", matricula, senha).first();
     }
 	
 	public static void pesquisarAluno(String busca) {
@@ -65,7 +65,7 @@ public class Professores extends Controller{
 	}
 	
 	public static void removerProfessor(long id) {
-    	Professor professor = buscaProfessor(id);
+    	Professor professor = Professor.findById(id);
     	if(professor.delete() != null) {
     		flash.success("Professor removido com sucesso!");
     		listarProfessor();
@@ -76,7 +76,7 @@ public class Professores extends Controller{
 	
 
     public static void listarProfessor(){
-    	List<Aluno> professores = Professor.findAll();
+    	List<Professor> professores = Professor.findAll();
     	render(professores);
      } 
     

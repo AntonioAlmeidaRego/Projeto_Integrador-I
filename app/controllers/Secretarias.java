@@ -28,8 +28,8 @@ public class Secretarias extends Controller{
 	    	return secretaria;
 	    }
 	    
-	    public static List<Secretaria> buscaSecretariaBD(String matricula, String senha) {
-	    	return Secretaria.find("matricula = ? and senha =?", matricula, senha).fetch();
+	    public static Secretaria buscaSecretariaBD(String matricula, String senha) {
+	    	return Secretaria.find("matricula = ? and senha =?", matricula, senha).first();
 	    }
 	    
 	    public static void removerSecretaria(long id) {

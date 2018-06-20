@@ -8,6 +8,8 @@
 				<th>Nome</th>
 				<th>Matricula</th>
 				<th>CPF</th>
+				<th>Disciplina</th>
+				<th>Turma</th>
 				<th>Bairro</th>
 				<th>Rua</th>
 				<th>Alterar</th>
@@ -18,6 +20,8 @@
 			<td>${aluno.nome}</td>
 			<td>${aluno.matricula}</td>
 			<td>${aluno.cpf}</td>
+			<td>${aluno.disciplina?.nomeDisciplina}</td>
+			<td>${aluno.turma?.nomeTurma}</td>
 			<td>${aluno.bairro}</td>
 			<td>${aluno.rua}</td>
 			<td><a href="@{Alunos.editarAluno(aluno.id)}" class="btn btn-primary">Alterar Aluno</a></td>

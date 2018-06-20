@@ -9,8 +9,8 @@ import play.mvc.Controller;
 public class Disciplinas extends Controller{
 	
 	public static void cadastro_disciplina() {
-		List<Professor> professor = Professor.findAll();
-		render(professor);
+		List<Professor> professores = Professor.findAll();
+		render(professores);
 	}
 	
 	public static void salvarDisciplina(Disciplina disciplina) {
@@ -41,17 +41,9 @@ public class Disciplinas extends Controller{
 	    	return disciplinas;
 	    }
 	 
-	 public static Disciplina buscaDisciplina(long id) {
-	    	for(Disciplina disciplina : getListaDisciplina()) {
-	    		if(disciplina.getId() == id) {
-	    			return disciplina;
-	    		}
-	    	}
-	    	return null;
-	    }
-	 
-	 public static void removerDisciplina(long id) {
-	    	Disciplina disciplina = buscaDisciplina(id);
+	  
+	 public static void removerDisciplina(int id) {
+	    	Disciplina disciplina = Disciplina.findById(id);
 	    	if(disciplina.delete() != null) {
 	    		flash.success("Disciplina removida com sucesso!");
 	    		listarDisciplina();
