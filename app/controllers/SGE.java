@@ -23,7 +23,7 @@ public class SGE extends Controller{
     	String admistrador = "admin";
     	String senha = "admin";
     	if(admistrador.equals(usuario.getUsuario()) && senha.equals(usuario.getSenha())) {
-    		renderTemplate("Administradores/portal_admin.html",admistrador);
+    		renderTemplate("Administradores/portalAdmin.html",admistrador);
     	}else if(secretaria != null) {
     		renderTemplate("Secretarias/portal_secretaria.html",secretaria);
     	}else if(aluno != null){

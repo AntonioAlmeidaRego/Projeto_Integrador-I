@@ -1,54 +1,72 @@
-#{extends 'main.html' /}
+#{extends 'main-secretaria.html' /}
+#{set title:'SGE - Adicionar Turma' /}
 <meta charset="utf-8" />
-	<div class="content-wrapper">
-		<div class="container-fluid">
-			<form action="@{Turmas.salvarTurma}" method="post" class="form-control">
-				<h1 align="center">Cadastro de Turma</h1>
-				<input type="hidden" value="${turma?.id}"  name="turma.id">
-				<label>Nome da Turma: </label>
-				<input type="text" name="turma.nomeTurma" value="${turma?.nomeTurma}" class="form-control"><br />
-				<label>Número da Sala: </label>
-				<input type="text" name="turma.numeroSala" value="${turma?.numeroSala}" class="form-control"><br />
-				<label>Turno: </label>
-				<input type="text" name="turma.turno" value="${turma?.turno}" class="form-control"><br />	
-				<button type="submit" class="btn btn-success">Cadastrar</button>
-				<button type="reset" class="btn btn-danger">Limpar Campos</button>
-			</form>
-		</div>
-	</div>
-	<!-- /.container-fluid-->
-	<!-- /.content-wrapper-->
-	<footer class="sticky-footer">
-		<div class="container">
-			<div class="text-center">
-				<small>Sistema de Gestão Escolar - 2018</small>
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header card-header-primary">
+				<h4 class="card-title">Adicionar uma nova turma</h4>
+			</div>
+			<div class="card-body">
+				<div id="typography">
+					<div class="row">
+						<div class="content">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="card">
+											<div class="card-body">
+												<form name="form1" action="@{Turmas.salvarTurma}" method="post">
+													<div class="row">
+														<div class="col-md-3">
+															<div class="form-group">
+																<input type="hidden" value="${turma?.id}"  name="turma.id">
+																 <label
+																	class="bmd-label-floating">Ano escolar</label> <input
+																	type="text" name="turma.anoEscolar" value="${turma?.anoEscolar}" class="form-control">
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Nome da turma</label> <input
+																	type="text" class="form-control" name="turma.nomeTurma" value="${turma?.nomeTurma}">
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Número da Sala</label> <input
+																	type="text" name="turma.numeroSala" value="${turma?.numeroSala}" class="form-control">
+															</div>
+														</div>
+														
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Turno</label> <input
+																	type="text" name="turma.turno" value="${turma?.turno}" class="form-control">
+															</div>
+														</div>
+														
+													</div>
+
+
+													<button type="submit" class="btn btn-success pull-right">Cadastrar</button>
+													<button type="reset" class="btn btn-primary pull-right">Limpar
+														Campos</button>
+													<div class="clearfix"></div>
+												</form>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fa fa-angle-up"></i>
-	</a>
-	<!-- Logout Modal-->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Selecione "Sair" para encerrar a Sessão atual</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="index.html">Sair</a>
-				</div>
-			</div>
-		</div>
 	</div>
+</div>
+
 	
- 

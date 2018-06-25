@@ -9,13 +9,14 @@ import play.mvc.Controller;
 public class Secretarias extends Controller{
 	
 		public static void salvarSecretaria(Secretaria secretaria) {
-			if(secretaria.save() != null) {
-				flash.success("Secretaria salva com sucesso!");
-				listarSecretaria();
-			}else {
-				flash.error("Secretaria não foi salva, tente novamente");
-				listarSecretaria();
+			System.out.println(params.get("excluirFoto"));
+			if(params.get("excluirFoto") != null) {
+				secretaria.foto.getFile().delete();
 			}
+			
+			secretaria.save();
+			flash.success("Secretário(a) salvo (a) com sucesso!");
+			listarSecretaria();			
 		}
 		
 		public static void listarSecretaria(){
@@ -35,22 +36,30 @@ public class Secretarias extends Controller{
 	    public static void removerSecretaria(long id) {
 	    	Secretaria secretaria = Secretaria.findById(id);
 	    	if(secretaria.delete() != null) {
-	    		flash.success("Secretaria removida com sucesso!");
+	    		flash.success("Secretario(a) removido(a) com sucesso!");
 	    		listarSecretaria();
 	    	}else {
-	    		flash.error("Secretaria não foi removida!");
+	    		flash.error("Houve um erro, tente novamente!");
 	    		listarSecretaria();
 	    	}
 	    }
 	    
 		public static void editarSecretaria(Long id) {
 			Secretaria secretaria = Secretaria.findById(id);
-			renderTemplate("Administradores/cadastro_secretaria.html",secretaria);
+			renderTemplate("Administradores/cadastrarSecretaria.html",secretaria);
 		}
 		
 
 	    public static void portal_secretaria() {
 	    	List<Secretaria> secretaria = Secretaria.findAll();
 	    	render(secretaria);
+	    }
+	    
+	    
+	    public static void fotoSecretaria(Long id) {
+	    	Secretaria secretaria = Secretaria.findById(id);
+	    	notFoundIfNull(secretaria);
+	    	response.setContentTypeIfNotSet(secretaria.foto.type());
+	    	renderBinary(secretaria.foto.get());
 	    }
 }

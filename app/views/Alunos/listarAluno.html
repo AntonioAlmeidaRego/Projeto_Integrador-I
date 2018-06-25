@@ -1,70 +1,73 @@
-#{extends 'main.html' /}
+#{extends 'main-secretaria.html' /}
+#{set title:'SGE - Alunos Matriculados' /}
 <meta charset="utf-8" />
-	<div class="content-wrapper">
-		<div class="container-fluid">
-			<h1 align="center">Lista de Alunos</h1>
-		<table class="table dataTable table-responsive-sm">
-    		<tr>
-				<th>Nome</th>
-				<th>Matricula</th>
-				<th>CPF</th>
-				<th>Disciplina</th>
-				<th>Turma</th>
-				<th>Bairro</th>
-				<th>Rua</th>
-				<th>Alterar</th>
-				<th>Remover</th>
-			</tr>
-	#{list items: alunos, as:'aluno'}
-		<tr>
-			<td>${aluno.nome}</td>
-			<td>${aluno.matricula}</td>
-			<td>${aluno.cpf}</td>
-			<td>${aluno.disciplina?.nomeDisciplina}</td>
-			<td>${aluno.turma?.nomeTurma}</td>
-			<td>${aluno.bairro}</td>
-			<td>${aluno.rua}</td>
-			<td><a href="@{Alunos.editarAluno(aluno.id)}" class="btn btn-primary">Alterar Aluno</a></td>
-			<td><a href="remover?id=${aluno.id}" class="btn btn-danger">Remover Aluno</a></td>
-		</tr>
-	#{/list}
-</table>
-	#{else}Nenhum Aluno adicionado!.#{/else}
-		</div>
-	</div>
-	<!-- /.container-fluid-->
-	<!-- /.content-wrapper-->
-	<footer class="sticky-footer">
-		<div class="container">
-			<div class="text-center">
-				<small>Sistema de Gestão Escolar - 2018</small>
+
+<!-- Mensagem de Sucesso -->
+#{if flash.success}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.success.raw()}
+	</span>
+</div>
+
+#{/if}
+
+
+<!-- Mensagem de erro -->
+
+#{if flash.error}
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.error.raw()}
+	</span>
+</div>
+#{/if}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<h4 class="card-title ">Alunos Matriculados</h4>
+				
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead class=" text-primary">
+									<th>Nome</th>
+									<th>Matricula</th>
+									<th>Turma</th>
+									<th>Alterar</th>
+									<th>Remover</th>
+								</thead>
+								
+								#{list items: alunos, as:'aluno'}
+								<tbody>
+									<tr>
+										<td>${aluno.nome}</td>
+										<td>${aluno.matricula}</td>
+										<td>${aluno.turma?.nomeTurma}</td>
+										<td><a href="@{Alunos.editarAluno(aluno.id)}" class="btn btn-primary">Alterar Aluno</a></td>
+										<td><a href="remover?id=${aluno.id}" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a></td>
+									</tr>
+								#{/list}
+								</tbody>
+								#{else}Nenhum Aluno Matriculado!#{/else}
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fa fa-angle-up"></i>
-	</a>
-	<!-- Logout Modal-->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Selecione "Sair" para encerrar a Sessão atual</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="index.html">Sair</a>
-				</div>
-			</div>
-		</div>
 	</div>
-	
-	 
+</div>
+
+

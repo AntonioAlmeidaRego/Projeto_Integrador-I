@@ -1,25 +1,73 @@
-#{extends 'main.html' /}
+#{extends 'main-secretaria.html' /}
+#{set title:'SGE - Disciplinas disponíveis' /}
 <meta charset="utf-8" />
-	<div class="content-wrapper">
-		<div class="container-fluid">
-			<h1 align="center">Lista de Disciplinas</h1>
-		<table class="table table-date table-responsive-sm">
-    		<tr>
-				<th>Nome da Disciplina</th>
-				<th>Professor Responsável</th>
-				<th>Alterar</th>
-				<th>Remover</th>
-			</tr>
-	#{list items: disciplinas, as:'disciplina'}
-		<tr>
-			<td>${disciplina.nomeDisciplina}</td>
-			<td>${disciplina?.professor?.nome}</td>
-			<td><a href="@{Disciplinas.editarDisciplina(disciplina.id)}" class="btn btn-primary">Alterar Disciplina</a></td>
-			<td><a href="removerDisciplina?id=${disciplina.id}" class="btn btn-danger">Remover Disciplina</a></td>
-		</tr>
-	#{/list}
-</table>
-	#{else}Nenhuma Disciplina adicionada!.#{/else}
+
+ <!-- Mensagem de Sucesso -->
+#{if flash.success}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.succes.raw()}
+	</span>
+</div>
+
+#{/if}
+
+
+<!-- Mensagem de erro -->
+
+#{if flash.error}
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.error.raw()}
+	</span>
+</div>
+#{/if}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<h4 class="card-title ">Disciplinas</h4>
+				
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead class=" text-primary">
+									<th>Nome</th>
+									<th>Professor responsável</th>
+									<th>Alterar</th>
+									<th>Remover</th>
+								</thead>
+								
+								#{list items: disciplinas, as:'disciplina'}
+								<tbody>
+									<tr>
+										<td>${disciplina.nomeDisciplina}</td>
+										<td>${disciplina?.professor?.nome}</td>
+										<td><a href="@{Disciplinas.editarDisciplina(disciplina.id)}" class="btn btn-primary">Editar</a></td>
+										<td><a href="removerDisciplina?id=${disciplina.id}" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a></td>
+									</tr>
+								#{/list}
+								</tbody>
+								#{else}Sem disciplinas#{/else}
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+</div>
+ 
+
+
 	

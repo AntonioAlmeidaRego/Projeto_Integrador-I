@@ -17,9 +17,25 @@ public class Aluno extends Model{
 	public String matricula;
 	public String rua;
 	public String bairro;
+	public int numeroCasa;
+	public String cidade;
+	public String ufCidade;
+	public String cep;
 	public String cpf;
 	public String dataNascimento;
 	public String senha;
+	public String naturalidade;
+	public String ufNaturalidade;
+	public String sexo;
+	public int certidaoCivilNum;
+	public int folhaCertidao;
+	public int livroCertidao;
+	public String cartorioCertidao;
+	public int rgNumero;
+	public String rgExpedidor;
+	public String dataExpedicao;
+	public String nomeMae;
+	public String nomePai;
 	
 	@ManyToOne
 	@JoinColumn(name="turma_id")

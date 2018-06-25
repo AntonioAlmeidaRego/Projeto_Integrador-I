@@ -3,8 +3,10 @@ package jobs;
 import models.Aluno;
 import models.Professor;
 import models.Secretaria;
+import models.Turma;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
+
 
 @OnApplicationStart
 public class Inicializador extends Job {
@@ -18,7 +20,7 @@ public class Inicializador extends Job {
 			secretaria.senha = "123";
 			secretaria.save();
 			
-			/*Aluno aluno = new Aluno();
+			Aluno aluno = new Aluno();
 			aluno.nome = "Antônio";
 			aluno.senha = "123";
 			aluno.save();
@@ -26,7 +28,7 @@ public class Inicializador extends Job {
 			Aluno aluno2 = new Aluno();
 			aluno2.nome = "Francisco Leandro";
 			aluno2.senha = "123";
-			aluno2.save();*/
+			aluno2.save();
 			
 			Professor prof = new Professor();
 			prof.nome = "João Helis Bernardo";
@@ -37,6 +39,19 @@ public class Inicializador extends Job {
 			prof2.nome = "Daniel Aguiar";
 			prof2.senha = "123";
 			prof2.save();
+			
+			Turma turma1 = new Turma();
+			turma1.anoEscolar = "8º";
+			turma1.nomeTurma = "A";
+			turma1.numeroSala = 10;
+			turma1.save();
+			
+			Turma turma2 = new Turma();
+			turma2.anoEscolar = "7º";
+			turma2.nomeTurma = "A";
+			turma2.numeroSala = 9;
+			turma2.save();
+			
 
 		}
 	}

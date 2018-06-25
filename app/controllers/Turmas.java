@@ -14,10 +14,10 @@ public class Turmas extends Controller{
 	
 	public static void salvarTurma(Turma turma) {
 		if(turma.save() != null) {
-			flash.success("Turma salva com sucesso!");
+			flash.success("Turma adicionada com sucesso");
 			listarTurma();
 		}else {
-			flash.error("Turma não foi salva, tente novamente");
+			flash.error("Houve um erro, tente novamente");
 			listarTurma();
 		}
 	}

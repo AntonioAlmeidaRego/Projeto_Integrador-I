@@ -1,74 +1,307 @@
-#{extends 'main.html' /}
+#{extends 'main-secretaria.html' /}
+#{set title:'SGE - Realizar matrícula' /}
 <meta charset="utf-8" />
-	<div class="content-wrapper">
-		<div class="container-fluid">
-			<form action="@{Alunos.salvarAluno}" method="post" class="form-control">
-				<h1 align="center">Cadastro de Aluno</h1>
-				<input type="hidden" value="${aluno?.id}"  name="aluno.id">
-				<label>Nome: </label>
-				<input type="text" name="aluno.nome" value="${aluno?.nome}" class="form-control"><br />
-				<label>Senha: </label>
-				<input type="password" name="aluno.senha" value="${aluno?.senha}" class="form-control"><br/>
-				<label>CPF: </label>
-				<input type="text" name="aluno.cpf" value="${aluno?.cpf}" class="form-control"><br />
-				<label>Matricula: </label>
-				<input type="text" name="aluno.matricula" value="${aluno?.matricula}" class="form-control"><br />	
-				<label>Turma</label>
-				<select name="aluno.turma.id" class="form-control">
-				<option>---Selecione a Turma---</option>
-				#{list items: turmas, as:'turma'}
-					<option value="${turma?.id}">${turma.nomeTurma}</option>
-				#{/list}
-				</select><br />
-				<label>Disciplinas</label><br/>
-				#{list items: disciplinas, as:'disciplina'}
-					<label>${disciplina?.nomeDisciplina}</label>
-					<input type="checkbox" name="aluno.disciplina.id" value="${disciplina?.id}">
-				#{/list}<br/>
-				<label>Rua: </label>
-				<input type="text" name="aluno.rua" value="${aluno?.rua}" class="form-control"><br />
-				<label>Bairro: </label>
-				<input type="text" name="aluno.bairro" value="${aluno?.bairro}" class="form-control"><br />	
-				<label>Data de Nascimento: </label>
-				<input type="date" name="aluno.dataNascimento" value="${aluno?.dataNascimento}" class="form-control"><br />	
-				<button type="submit" class="btn btn-success">Cadastrar</button>
-				<button type="reset" class="btn btn-danger">Limpar Campos</button>
-			</form>
-			<br />
-		</div>
-	</div>
-	<!-- /.container-fluid-->
-	<!-- /.content-wrapper-->
-	<footer class="sticky-footer">
-		<div class="container">
-			<div class="text-center">
-				<small>Sistema de Gestão Escolar - 2018</small>
+
+<!-- Mensagem de Sucesso -->
+#{if flash.success}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.succes.raw()}
+	</span>
+</div>
+
+#{/if}
+
+
+<!-- Mensagem de erro -->
+
+#{if flash.error}
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.error.raw()}
+	</span>
+</div>
+#{/if}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header card-header-primary">
+				<h4 class="card-title">Matricular um novo Aluno</h4>
+			</div>
+			<div class="card-body">
+				<div id="typography">
+					<div class="row">
+						<div class="content">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="card">
+											<div class="card-body">
+												<form name="form1" action="@{Alunos.salvarAluno}"
+													method="post">
+													<div class="row">
+														<input type="hidden" value="${aluno?.id}" name="aluno.id">
+
+														
+														<div class="col-md-12">
+															<label class="bmd-label">DADOS DO ALUNO</label>
+														</div>
+														<hr></hr>
+
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="bmd-label-floating">Nome completo
+																</label> <input type="text" name="aluno.nome"
+																	value="${aluno?.nome}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Data de
+																	Nascimento</label> <input type="date"
+																	name="aluno.dataNascimento"
+																	value="${aluno?.dataNascimento}" class="form-control">
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Senha</label> <input
+																	type="password" name="aluno.senha"
+																	value="${aluno?.senha}" class="form-control">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Naturalidade</label> <input
+																	type="text" name="aluno.naturalidade"
+																	value="${aluno?.naturalidade}" class="form-control">
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">UF</label> <input
+																	type="text" name="aluno.ufNaturalidade"
+																	value="${aluno?.ufNaturalidade}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Sexo</label> <input
+																	type="text" name="aluno.sexo" value="${aluno?.sexo}"
+																	class="form-control">
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Matrícula</label> <input
+																	type="text" name="aluno.matricula"
+																	value="${aluno?.matricula}" class="form-control">
+															</div>
+														</div>
+														<hr1></hr1>
+														
+													
+
+														<div class="col-md-12">
+														<div>
+															<label class="bmd-label">DOCUMENTAÇÃO</label>
+															</div>
+														</div>
+														
+														<hr></hr>
+
+
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<label class="bmd-label-floating">Certidão de
+																	Nascimento Nº</label> <input type="text"
+																	name="aluno.certidaoCivilNum"
+																	value="${aluno?.certidaoCivilNum}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-2">
+															<div class="form-group">
+																<label class="bmd-label-floating">Folhas</label> <input
+																	type="text" name="aluno.folhaCertidao"
+																	value="${aluno?.folhaCertidao}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-2">
+															<div class="form-group">
+																<label class="bmd-label-floating">Livro</label> <input
+																	type="text" name="aluno.livroCertidao"
+																	value="${aluno?.livroCertidao}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<label class="bmd-label-floating">Cartório</label> <input
+																	type="text" name="aluno.cartorioCertidao"
+																	value="${aluno?.cartorioCertidao}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">CPF</label> <input
+																	type="text" name="aluno.cpf" value="${aluno?.cpf}"
+																	class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">RG (nº)</label> <input
+																	type="text" name="aluno.rgNumero"
+																	value="${aluno?.rgNumero}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Órgão
+																	Expedidor</label> <input type="text" name="aluno.rgExpedidor"
+																	value="${aluno?.rgExpedidor}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Data Expedição</label>
+																<input type="date" name="aluno.dataExpedicao"
+																	value="${aluno?.dataExpedicao}" class="form-control">
+															</div>
+														</div>
+														
+														<hr1></hr1>
+														<div class="col-md-12">
+															<label class="bmd-label">FILIAÇÃO</label>
+														</div>
+														<hr></hr>
+
+
+
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="bmd-label-floating">Nome da Mãe </label> <input
+																	type="text" name="aluno.nomeMae"
+																	value="${aluno?.nomeMae}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="bmd-label-floating">Nome do Pai </label> <input
+																	type="text" name="aluno.nomePai"
+																	value="${aluno?.nomePai}" class="form-control">
+															</div>
+														</div>
+														
+														<hr1></hr1>
+														<div class="col-md-12">
+															<label class="bmd-label">ENDEREÇO</label>
+														</div>
+														<hr></hr>
+
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Rua</label> <input
+																	type="text" name="aluno.rua" value="${aluno?.rua}"
+																	class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Número</label> <input
+																	type="text" name="aluno.numeroCasa"
+																	value="${aluno?.numeroCasa}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Bairro</label> <input
+																	type="text" name="aluno.bairro"
+																	value="${aluno?.bairro}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Cidade</label> <input
+																	type="text" name="aluno.cidade"
+																	value="${aluno?.cidade}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<label class="bmd-label-floating">UF</label> <input
+																	type="text" name="aluno.ufCidade"
+																	value="${aluno?.ufCidade}" class="form-control">
+															</div>
+														</div>
+
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">CEP</label> <input
+																	type="text" name="aluno.cep" value="${aluno?.cep}"
+																	class="form-control">
+															</div>
+														</div>
+														
+													
+														<div class="col-md-12">
+															<a class="nav-link">TURMA</a>
+														</div>
+														<hr></hr>
+
+
+														<select name="aluno.turma.id" class="form-control">
+															<option>---Selecione a Turma---</option> #{list items:
+															turmas, as:'turma'}
+															<option value="${turma?.id}">${turma.nomeTurma}</option>
+															#{/list}
+														</select>
+
+
+
+													</div>
+
+
+													<button type="submit" class="btn btn-success pull-right">Cadastrar</button>
+													<button type="reset" class="btn btn-primary pull-right">Limpar
+														Campos</button>
+													<div class="clearfix"></div>
+												</form>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fa fa-angle-up"></i>
-	</a>
-	<!-- Logout Modal-->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Selecione "Sair" para encerrar a Sessão atual</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="index.html">Sair</a>
-				</div>
-			</div>
-		</div>
 	</div>
- 
+</div>
+

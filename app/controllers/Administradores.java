@@ -4,7 +4,7 @@ import play.mvc.Controller;
 
 public class Administradores extends Controller{
 
-		public static void cadastrar_secretaria() {
+		public static void cadastrarSecretaria() {
 			render();
 		}
 		
@@ -12,7 +12,7 @@ public class Administradores extends Controller{
 			render();
 		}
 		
-		public static void portal_admin() {
+		public static void portalAdmin() {
 			render();
 		}
 }

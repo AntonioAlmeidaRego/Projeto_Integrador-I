@@ -31,10 +31,10 @@ public class Alunos extends Controller{
 	
 	public static void salvarAluno(Aluno aluno) {
     	if(aluno.save() != null) {
-    		flash.success("Aluno salvo com sucesso!");
+    		flash.success("Matrícula efetuada com sucesso");
     		listarAluno();
     	}else {
-    		flash.error("Aluno não foi salvo, tente novamente");
+    		flash.error("Houve um erro, tente novamente");
     		listarAluno();
     	}
     }

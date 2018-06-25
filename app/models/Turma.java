@@ -12,6 +12,7 @@ import play.db.jpa.Model;
 public class Turma extends Model{
 	
 	
+	public String anoEscolar;
 	public String nomeTurma;
 	public int numeroSala;
 	public String turno;

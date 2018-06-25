@@ -1,37 +1,75 @@
-#{extends 'main.html' /}
+#{extends 'main-secretaria.html' /}
+#{set title:'SGE - Turmas' /}
 <meta charset="utf-8" />
-	<div class="content-wrapper">
-		<div class="container-fluid">
-			<h1 align="center">Lista de Turmas</h1>
-		<table class="table table-date table-responsive-sm" >
-    		<tr>
-				<th>Nome da Turma</th>
-				<th>Número da Sala</th>
-				<th>Turno</th>
-				<th>Alterar</th>
-				<th>Remover</th>
-			</tr>
-	#{list items: turmas, as:'turma'}
-		<tr>
-			<td>${turma.nomeTurma}</td>
-			<td>${turma.numeroSala}</td>
-			<td>${turma.turno}</td>
-			<td><a href="@{Turmas.editarTurma(turma.id)}" class="btn btn-primary">Alterar Turma</a></td>
-			<td><a href="removerTurma?id=${turma.id}" class="btn btn-danger">Remover Turma</a></td>
-		</tr>
-	#{/list}
-</table>
-	#{else}Nenhuma Turma adicionada!.#{/else}
-		</div>
-	</div>
-	<!-- /.container-fluid-->
-	<!-- /.content-wrapper-->
-	<footer class="sticky-footer">
-		<div class="container">
-			<div class="text-center">
-				<small>Sistema de Gestão Escolar - 2018</small>
+
+ <!-- Mensagem de Sucesso -->
+#{if flash.success}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.succes.raw()}
+	</span>
+</div>
+
+#{/if}
+
+
+<!-- Mensagem de erro -->
+
+#{if flash.error}
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<i class="material-icons">close</i>
+	</button>
+	<span> <b></b>${flash.error.raw()}
+	</span>
+</div>
+#{/if}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<h4 class="card-title ">Turmas</h4>
+				
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead class=" text-primary">
+									<th>Ano Escolar</th>
+									<th>Nome da Turma</th>
+									<th>Número da sala</th>
+									<th>Turno</th>
+									<th>Alterar</th>
+									<th>Remover</th>
+								</thead>
+								
+								#{list items: turmas, as:'turma'}
+								<tbody>
+									<tr>
+										<td>${turma.anoEscolar}</td>
+										<td>${turma.nomeTurma}</td>
+										<td>${turma.numeroSala}</td>
+										<td>${turma.turno}</td>
+										<td><a href="@{Turmas.editarTurma(turma.id)}" class="btn btn-primary">Editar</a></td>
+										<td><a href="removerTurma?id=${turma.id}" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a></td>
+									</tr>
+								#{/list}
+								</tbody>
+								#{else}Sem turmas existentes#{/else}
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</footer>
-	
+	</div>
+</div>
  
+	
