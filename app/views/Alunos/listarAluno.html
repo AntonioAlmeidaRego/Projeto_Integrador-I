@@ -40,13 +40,13 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table">
+							<table class="table" id="table">
 								<thead class=" text-primary">
 									<th>Nome</th>
 									<th>Matricula</th>
 									<th>Turma</th>
-									<th>Alterar</th>
-									<th>Remover</th>
+									<th>Ações</th>
+								
 								</thead>
 								
 								#{list items: alunos, as:'aluno'}
@@ -55,12 +55,13 @@
 										<td>${aluno.nome}</td>
 										<td>${aluno.matricula}</td>
 										<td>${aluno.turma?.nomeTurma}</td>
-										<td><a href="@{Alunos.editarAluno(aluno.id)}" class="btn btn-primary">Alterar Aluno</a></td>
-										<td><a href="remover?id=${aluno.id}" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a></td>
+										<td><a href="@{Alunos.editarAluno(aluno.id)}"><i class="material-icons">edit</i></a>
+										<a href="remover?id=${aluno.id}"><i class="material-icons">delete_sweep</i></a>
+										</td>
+										
 									</tr>
 								#{/list}
 								</tbody>
-								#{else}Nenhum Aluno Matriculado!#{/else}
 							</table>
 						</div>
 					</div>

@@ -1,5 +1,5 @@
-#{extends 'main-secretaria.html' /}
-#{set title:'SGE - Realizar matrícula' /}
+#{extends 'main-secretaria.html' /} #{set title:'SGE - Realizar
+matrícula' /}
 <meta charset="utf-8" />
 
 <!-- Mensagem de Sucesso -->
@@ -49,9 +49,9 @@
 													<div class="row">
 														<input type="hidden" value="${aluno?.id}" name="aluno.id">
 
-														
+
 														<div class="col-md-12">
-															<label class="bmd-label">DADOS DO ALUNO</label>
+															<a>DADOS DO ALUNO</a>
 														</div>
 														<hr></hr>
 
@@ -65,9 +65,8 @@
 
 														<div class="col-md-3">
 															<div class="form-group">
-																<label class="bmd-label-floating">Data de
-																	Nascimento</label> <input type="date"
-																	name="aluno.dataNascimento"
+																<label class="bmd-label">Data de Nascimento</label> <input
+																	type="date" name="aluno.dataNascimento"
 																	value="${aluno?.dataNascimento}" class="form-control">
 															</div>
 														</div>
@@ -83,23 +82,28 @@
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Naturalidade</label> <input
-																	type="text" name="aluno.naturalidade"
+																	type="text" name="aluno.naturalidade" id="cidade3"
 																	value="${aluno?.naturalidade}" class="form-control">
 															</div>
 														</div>
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">UF</label> <input
-																	type="text" name="aluno.ufNaturalidade"
+																	type="text" name="aluno.ufNaturalidade" id="estado3"
 																	value="${aluno?.ufNaturalidade}" class="form-control">
 															</div>
 														</div>
 
 														<div class="col-md-3">
 															<div class="form-group">
-																<label class="bmd-label-floating">Sexo</label> <input
-																	type="text" name="aluno.sexo" value="${aluno?.sexo}"
-																	class="form-control">
+																<select class="form-control"><option
+																		value="${aluno?.sexo}" class="form-control">SEXO</option>
+																
+																<option
+																		value="${aluno?.sexo}" class="form-control">MASCULINO</option>
+																		<option
+																		value="${aluno?.sexo}" class="form-control">FEMININO</option>
+																		</select>
 															</div>
 														</div>
 														<div class="col-md-3">
@@ -110,15 +114,15 @@
 															</div>
 														</div>
 														<hr1></hr1>
-														
-													
+
+
 
 														<div class="col-md-12">
-														<div>
-															<label class="bmd-label">DOCUMENTAÇÃO</label>
+															<div>
+																<a>DOCUMENTAÇÃO</a>
 															</div>
 														</div>
-														
+
 														<hr></hr>
 
 
@@ -182,12 +186,12 @@
 
 														<div class="col-md-3">
 															<div class="form-group">
-																<label class="bmd-label-floating">Data Expedição</label>
-																<input type="date" name="aluno.dataExpedicao"
+																<label class="bmd-label">Data Expedição</label> <input
+																	type="date" name="aluno.dataExpedicao"
 																	value="${aluno?.dataExpedicao}" class="form-control">
 															</div>
 														</div>
-														
+
 														<hr1></hr1>
 														<div class="col-md-12">
 															<label class="bmd-label">FILIAÇÃO</label>
@@ -211,15 +215,15 @@
 																	value="${aluno?.nomePai}" class="form-control">
 															</div>
 														</div>
-														
+
 														<hr1></hr1>
 														<div class="col-md-12">
-															<label class="bmd-label">ENDEREÇO</label>
+															<a>ENDEREÇO</a>
 														</div>
 														<hr></hr>
 
 
-														<div class="col-md-3">
+														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">Rua</label> <input
 																	type="text" name="aluno.rua" value="${aluno?.rua}"
@@ -242,22 +246,24 @@
 																	value="${aluno?.bairro}" class="form-control">
 															</div>
 														</div>
-
-														<div class="col-md-3">
-															<div class="form-group">
-																<label class="bmd-label-floating">Cidade</label> <input
-																	type="text" name="aluno.cidade"
-																	value="${aluno?.cidade}" class="form-control">
-															</div>
-														</div>
-
-														<div class="col-md-4">
+														
+														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">UF</label> <input
 																	type="text" name="aluno.ufCidade"
-																	value="${aluno?.ufCidade}" class="form-control">
+																	value="${aluno?.ufCidade}" class="form-control" id="estado1">
 															</div>
 														</div>
+														
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="bmd-label-floating">Cidade</label> <input
+																	type="text" name="aluno.cidade"
+																	value="${aluno?.cidade}" class="form-control" id="cidade1">
+															</div>
+														</div>
+
+														
 
 														<div class="col-md-3">
 															<div class="form-group">
@@ -266,20 +272,21 @@
 																	class="form-control">
 															</div>
 														</div>
-														
-													
+
+
 														<div class="col-md-12">
-															<a class="nav-link">TURMA</a>
+															<a>SELECIONE A TURMA</a>
 														</div>
 														<hr></hr>
 
 
-														<select name="aluno.turma.id" class="form-control">
-															<option>---Selecione a Turma---</option> #{list items:
-															turmas, as:'turma'}
-															<option value="${turma?.id}">${turma.nomeTurma}</option>
-															#{/list}
-														</select>
+														<div class="col-md-4">
+															<select name="aluno.turma.id" class="form-control"
+																required> #{list items: turmas, as:'turma'}
+																<option value="${turma?.id}" class="form-control">${turma.anoEscolar}
+																	${turma.nomeTurma}</option> #{/list}
+															</select>
+														</div>
 
 
 
@@ -291,6 +298,7 @@
 														Campos</button>
 													<div class="clearfix"></div>
 												</form>
+												
 											</div>
 										</div>
 									</div>

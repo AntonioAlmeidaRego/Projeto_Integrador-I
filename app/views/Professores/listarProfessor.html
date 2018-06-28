@@ -40,14 +40,14 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table">
+							<table class="table" id="table">
 								<thead class=" text-primary">
 									<th>Nome</th>
 									<th>Matricula</th>
 									<th>CPF</th>
 									<th>Tipo de Vínculo</th>
-									<th>Alterar</th>
-									<th>Remover</th>
+									<th>Ações</th>
+									
 								</thead>
 								
 								#{list items: professores, as:'professor'}
@@ -57,8 +57,8 @@
 										<td>${professor.matricula}</td>
 										<td>${professor.cpf}</td>
 										<td>${professor.tipoVinculo}</td>
-										<td><a href="@{Professores.editarProfessor(professor.id)}" class="btn btn-primary">Editar</a></td>
-										<td><a href="removerProfessor?id=${professor.id}" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a></td>
+										<td><a href="@{Professores.editarProfessor(professor.id)}"><i class="material-icons">edit</i></a>
+										<a href="removerProfessor?id=${professor.id}"><i class="material-icons">delete_sweep</i></a></td>
 									</tr>
 								#{/list}
 								</tbody>

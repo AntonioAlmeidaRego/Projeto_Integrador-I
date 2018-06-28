@@ -2,14 +2,17 @@ package controllers;
 
 import java.util.List;
 
+import interceptors.Secure;
 import models.Aluno;
 import models.Disciplina;
 import models.Professor;
 import models.Turma;
-import models.Usuario;
+
 import play.db.jpa.GenericModel.JPAQuery;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Secure.class)
 public class Alunos extends Controller{
 	
 	public static void portal_aluno(Aluno aluno) {

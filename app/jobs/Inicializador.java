@@ -1,6 +1,7 @@
 package jobs;
 
 import models.Aluno;
+import models.Disciplina;
 import models.Professor;
 import models.Secretaria;
 import models.Turma;
@@ -16,11 +17,13 @@ public class Inicializador extends Job {
 		
 		if(Secretaria.count() == 0) {			
 			Secretaria secretaria = new Secretaria();
-			secretaria.matricula = "123";
+			secretaria.nome = "Francisca";
+			secretaria.matricula = "1234";
 			secretaria.senha = "123";
 			secretaria.save();
 			
 			Aluno aluno = new Aluno();
+			aluno.matricula = "201801";
 			aluno.nome = "Antônio";
 			aluno.senha = "123";
 			aluno.save();
@@ -31,6 +34,7 @@ public class Inicializador extends Job {
 			aluno2.save();
 			
 			Professor prof = new Professor();
+			prof.matricula = "098";
 			prof.nome = "João Helis Bernardo";
 			prof.senha = "123";
 			prof.save();
@@ -51,6 +55,10 @@ public class Inicializador extends Job {
 			turma2.nomeTurma = "A";
 			turma2.numeroSala = 9;
 			turma2.save();
+			
+			Disciplina disciplina1 = new Disciplina();
+			disciplina1.nomeDisciplina = "Português";
+			
 			
 
 		}

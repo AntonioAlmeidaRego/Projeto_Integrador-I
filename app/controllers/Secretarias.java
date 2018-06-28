@@ -2,10 +2,13 @@ package controllers;
 
 import java.util.List;
 
+import interceptors.Secure;
 import models.Aluno;
 import models.Secretaria;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Secure.class)
 public class Secretarias extends Controller{
 	
 		public static void salvarSecretaria(Secretaria secretaria) {

@@ -10,14 +10,22 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="@{'/public/bootstrap/vendor/bootstrap/css/bootstrap.min.css'}" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="@{'/public/bootstrap/vendor/font-awesome/css/font-awesome.min.css'}" rel="stylesheet" type="text/css">
-  <!-- Page level plugin CSS-->
-  <link href="@{'/public/bootstrap/vendor/datatables/dataTables.bootstrap4.css'}" rel="stylesheet">
-  <!-- Custom styles for this template-->
-  <link href="@{'/public/bootstrap/css/sb-admin.css'}" rel="stylesheet">
+<link
+	href="@{'/public/bootstrap/vendor/bootstrap/css/bootstrap.min.css'}"
+	rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link
+	href="@{'/public/bootstrap/vendor/font-awesome/css/font-awesome.min.css'}"
+	rel="stylesheet" type="text/css">
+<!-- Page level plugin CSS-->
+<link
+	href="@{'/public/bootstrap/vendor/datatables/dataTables.bootstrap4.css'}"
+	rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="@{'/public/bootstrap/css/sb-admin.css'}" rel="stylesheet">
 <link rel="icon" href="@{'/public/images/favicon-sge.png'}" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -36,20 +44,23 @@
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Link"><a class="nav-link" href="#"> <span class="nav-link-text"> <img id="profile-img" style="border-radius: 50%" class="profile-img-card"
-				src="@{'/public/images/avatar-professor.png'}" /></span>
+					title="Link"><a class="nav-link" href="#"> <span
+						class="nav-link-text"> <img id="profile-img"
+							style="border-radius: 50%" class="profile-img-card"
+							src="@{'/public/images/avatar-professor.png'}" /></span>
 				</a></li>
-				
+
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Link"><a class="nav-link" href="#"> <span class="nav-link-text"></span>
+					title="Link"><a class="nav-link" href="#"> <span
+						class="nav-link-text"></span>
 				</a></li>
-				
-				
-				
-				
+
+
+
+
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Link"><a class="nav-link" href="portal_professor"> <i
-						class="fa fa-fw fa-home"></i> <span class="nav-link-text">Início</span>
+					title="Link"><a class="nav-link" href="portal_professor">
+						<i class="fa fa-fw fa-home"></i> <span class="nav-link-text">Início</span>
 				</a></li>
 
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
@@ -109,7 +120,8 @@
 						<div class="dropdown-divider"></div>
 					</div></li>
 				<li class="nav-item">
-					<form action="@{Professores.pesquisarAluno}" class="form-inline my-2 my-lg-0 mr-lg-2" method="post">
+					<form action="@{Professores.pesquisarAluno}"
+						class="form-inline my-2 my-lg-0 mr-lg-2" method="post">
 						<div class="input-group">
 							<input class="form-control" type="text"
 								placeholder="Pesquisar Aluno" name="busca"> <span
@@ -122,26 +134,26 @@
 					</form>
 				</li>
 				<li class="nav-item"><a class="nav-link" data-toggle="modal"
-					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out" href="@{Application.index}"></i>Sair
+					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"
+						href="@{Application.index}"></i>Sair
 				</a></li>
 			</ul>
 		</div>
 	</nav>
 	#{if flash.success}
-		       		<div class="alert alert-success">
-						<p align="center">${flash.success.raw()}</p>
-					</div>
-				#{/if}
-				
-				
-				<!-- Mensagem de erro -->
-				
-				#{if flash.error}
-					<div class="alert alert-danger">
-						<p align="center">${flash.error.raw()}</p>
-					</div>
-		#{/if}
-	#{doLayout /}
+	<div class="alert alert-success">
+		<p align="center">${flash.success.raw()}</p>
+	</div>
+	#{/if}
+
+
+	<!-- Mensagem de erro -->
+
+	#{if flash.error}
+	<div class="alert alert-danger">
+		<p align="center">${flash.error.raw()}</p>
+	</div>
+	#{/if} #{doLayout /}
 	<!-- /.container-fluid-->
 	<!-- /.content-wrapper-->
 	<footer class="sticky-footer">
@@ -161,13 +173,15 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Deseja
+						realmente sair?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Selecione "Sair" para encerrar a Sessão atual</div>
+				<div class="modal-body">Selecione "Sair" para encerrar a
+					Sessão atual</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
@@ -176,33 +190,46 @@
 			</div>
 		</div>
 	</div>
-     <!-- Icon Cards-->
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Your Website 2018</small>
-        </div>
-      </div>
-    </footer>
-    <!-- Bootstrap core JavaScript-->
-    <script src="@{'/public/bootstrap/vendor/jquery/jquery.min.js'}"></script>
-    <script src="@{'/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js'}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="@{'/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js'}"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="@{'/public/bootstrap/vendor/chart.js/Chart.min.js'}"></script>
-    <script src="@{'/public/bootstrap/vendor/datatables/jquery.dataTables.js'}"></script>
-    <script src="@{'/public/bootstrap/vendor/datatables/dataTables.bootstrap4.js'}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="@{'/public/bootstrap/js/sb-admin.min.js'}"></script>
-    <!-- Custom scripts for this page-->
-    <script src="@{'/public/bootstrap/js/sb-admin-datatables.min.js'}"></script>
-    <script src="@{'/public/bootstrap/js/sb-admin-charts.min.js'}"></script>
-    
-    #{get 'moreScripts' /}
-    </div>
+	<!-- Icon Cards-->
+	<!-- /.container-fluid-->
+	<!-- /.content-wrapper-->
+	<footer class="sticky-footer">
+		<div class="container">
+			<div class="text-center">
+				<small>Copyright © Your Website 2018</small>
+			</div>
+		</div>
+	</footer>
+	<!-- Bootstrap core JavaScript-->
+	<script src="@{'/public/bootstrap/vendor/jquery/jquery.min.js'}"></script>
+	<script
+		src="@{'/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+	<!-- Core plugin JavaScript-->
+	<script
+		src="@{'/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js'}"></script>
+	<!-- Page level plugin JavaScript-->
+	<script src="@{'/public/bootstrap/vendor/chart.js/Chart.min.js'}"></script>
+	<script
+		src="@{'/public/bootstrap/vendor/datatables/jquery.dataTables.js'}"></script>
+	<script
+		src="@{'/public/bootstrap/vendor/datatables/dataTables.bootstrap4.js'}"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="@{'/public/bootstrap/js/sb-admin.min.js'}"></script>
+	<!-- Custom scripts for this page-->
+	<script src="@{'/public/bootstrap/js/sb-admin-datatables.min.js'}"></script>
+	<script src="@{'/public/bootstrap/js/sb-admin-charts.min.js'}"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#table').DataTable();
+		});
+	</script>
+
+	#{get 'moreScripts' /}
+
 </body>
 
 </html>

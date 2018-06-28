@@ -40,14 +40,14 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table">
+							<table class="table" id="table">
 								<thead class=" text-primary">
 									<th>Ano Escolar</th>
 									<th>Nome da Turma</th>
 									<th>Número da sala</th>
 									<th>Turno</th>
-									<th>Alterar</th>
-									<th>Remover</th>
+									<th>Ações</th>
+							
 								</thead>
 								
 								#{list items: turmas, as:'turma'}
@@ -57,8 +57,8 @@
 										<td>${turma.nomeTurma}</td>
 										<td>${turma.numeroSala}</td>
 										<td>${turma.turno}</td>
-										<td><a href="@{Turmas.editarTurma(turma.id)}" class="btn btn-primary">Editar</a></td>
-										<td><a href="removerTurma?id=${turma.id}" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a></td>
+										<td><a href="@{Turmas.editarTurma(turma.id)}"><i class="material-icons">edit</i></a>
+										<a href="removerTurma?id=${turma.id}"><i class="material-icons">delete_sweep</i></a></td>
 									</tr>
 								#{/list}
 								</tbody>

@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,7 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
@@ -22,7 +26,10 @@ public class Aluno extends Model{
 	public String ufCidade;
 	public String cep;
 	public String cpf;
-	public String dataNascimento;
+	
+	@Temporal(TemporalType.DATE)
+	public Date dataNascimento;
+	
 	public String senha;
 	public String naturalidade;
 	public String ufNaturalidade;
@@ -33,9 +40,13 @@ public class Aluno extends Model{
 	public String cartorioCertidao;
 	public int rgNumero;
 	public String rgExpedidor;
-	public String dataExpedicao;
+	
+	@Temporal(TemporalType.DATE)
+	public Date dataExpedicao;
+	
 	public String nomeMae;
 	public String nomePai;
+	public Blob foto;
 	
 	@ManyToOne
 	@JoinColumn(name="turma_id")

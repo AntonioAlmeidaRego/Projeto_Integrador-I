@@ -40,12 +40,11 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table">
+							<table class="table" id="table">
 								<thead class=" text-primary">
 									<th>Nome</th>
 									<th>Professor responsável</th>
-									<th>Alterar</th>
-									<th>Remover</th>
+									<th>Ações</th>
 								</thead>
 								
 								#{list items: disciplinas, as:'disciplina'}
@@ -53,12 +52,11 @@
 									<tr>
 										<td>${disciplina.nomeDisciplina}</td>
 										<td>${disciplina?.professor?.nome}</td>
-										<td><a href="@{Disciplinas.editarDisciplina(disciplina.id)}" class="btn btn-primary">Editar</a></td>
-										<td><a href="removerDisciplina?id=${disciplina.id}" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a></td>
+										<td><a href="@{Disciplinas.editarDisciplina(disciplina.id)}"><i class="material-icons">edit</i></a>
+										<a href="removerDisciplina?id=${disciplina.id}"><i class="material-icons">delete_sweep</i></a></td>
 									</tr>
 								#{/list}
 								</tbody>
-								#{else}Sem disciplinas#{/else}
 							</table>
 						</div>
 					</div>

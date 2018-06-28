@@ -7,7 +7,7 @@ import models.Disciplina;
 import models.Professor;
 import models.Secretaria;
 import models.Turma;
-import models.Usuario;
+
 import play.mvc.Controller;
 
 public class SGE extends Controller{
@@ -16,24 +16,58 @@ public class SGE extends Controller{
     	render();
     }
     
-    public static void login(Usuario usuario) {
-    	Aluno aluno = Alunos.buscaAlunoBD(usuario.getUsuario(), usuario.getSenha());
-    	Professor professor = Professores.buscaProfessorBD(usuario.getUsuario(), usuario.getSenha());
-    	Secretaria secretaria = Secretarias.buscaSecretariaBD(usuario.getUsuario(), usuario.getSenha());
-    	String admistrador = "admin";
-    	String senha = "admin";
-    	if(admistrador.equals(usuario.getUsuario()) && senha.equals(usuario.getSenha())) {
-    		renderTemplate("Administradores/portalAdmin.html",admistrador);
-    	}else if(secretaria != null) {
-    		renderTemplate("Secretarias/portal_secretaria.html",secretaria);
-    	}else if(aluno != null){
-    		renderTemplate("Alunos/portal_aluno.html",aluno);
-    	}else if(professor != null) {
-    		renderTemplate("Professores/portal_professor.html",professor);
-    	}else {
-    		flash.error("USUÁRIO OU SENHA INVÁLIDOS");
+    public static void login(String matricula, String senha) {
+    	Secretaria secretaria = Secretaria.find("matricula = ? and senha = ?", matricula, senha).first();
+    	Professor professor = Professor.find("matricula = ? and senha = ?", matricula, senha).first();
+    	Aluno aluno = Aluno.find("matricula = ? and senha = ?", matricula, senha).first();
+ 
+    	
+    	
+    	if(secretaria == null && professor == null && aluno == null) {
+    		flash.error("Matricula ou senha inválido");
+    		params.flash();
     		renderTemplate("Application/index.html");
+    	} else if(secretaria != null) {
+    		session.put("nome", secretaria.nome);
+    		session.put("secretaria", secretaria);
+    		renderTemplate("Secretarias/portal_secretaria.html",secretaria);
+    	} else if(professor != null) {
+    		session.put("professor", professor);
+    		renderTemplate("Professores/portal_professor.html",professor);
+    	} else if(aluno != null) {
+    		session.put("aluno", aluno);
+    		renderTemplate("Alunos/portal_aluno.html",aluno);
     	}
-    }  
+    }
+    
+    public static void logout() {
+    	session.clear();
+    	System.out.println("logout");
+    	renderTemplate("Application/index.html");
+    	
+    }
+   
+    
+    
+    
+    // public static void login(Usuario usuario) {
+    //	Aluno aluno = Alunos.buscaAlunoBD(usuario.getUsuario(), usuario.getSenha());
+    	//Professor professor = Professores.buscaProfessorBD(usuario.getUsuario(), usuario.getSenha());
+    	//Secretaria secretaria = Secretarias.buscaSecretariaBD(usuario.getUsuario(), usuario.getSenha());
+    //	String admistrador = "admin";
+    //	String senha = "admin";
+    //	if(admistrador.equals(usuario.getUsuario()) && senha.equals(usuario.getSenha())) {
+    //		renderTemplate("Administradores/portalAdmin.html",admistrador);
+    //	}else if(secretaria != null) {
+    //		renderTemplate("Secretarias/portal_secretaria.html",secretaria);
+    //	}else if(aluno != null){
+    //		renderTemplate("Alunos/portal_aluno.html",aluno);
+    //	}else if(professor != null) {
+    //		renderTemplate("Professores/portal_professor.html",professor);
+    //	}else {
+    //		flash.error("USUÁRIO OU SENHA INVÁLIDOS");
+    //		renderTemplate("Application/index.html");
+    //	}
+   // }  
     
 }
