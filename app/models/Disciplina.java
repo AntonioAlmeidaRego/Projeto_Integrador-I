@@ -18,8 +18,8 @@ public class Disciplina extends Model{
 	public String nomeDisciplina;
 	
 	
-	@ManyToMany(mappedBy="disciplina")
-	public List<Aluno> alunos;
+	@ManyToMany(mappedBy="disciplinas")
+	public List<Turma> turmas;
 	
 	@OneToOne
 	@JoinColumn(name="professor_id")

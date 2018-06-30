@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.List;
 
+import annotations.Admin;
+import models.Administrador;
 import models.Aluno;
 import models.Disciplina;
 import models.Professor;
@@ -20,13 +22,14 @@ public class SGE extends Controller{
     	Secretaria secretaria = Secretaria.find("matricula = ? and senha = ?", matricula, senha).first();
     	Professor professor = Professor.find("matricula = ? and senha = ?", matricula, senha).first();
     	Aluno aluno = Aluno.find("matricula = ? and senha = ?", matricula, senha).first();
- 
+    	Administrador admin = new Administrador();
+    	admin.matricula = "admin";
+    	admin.senha = "admin";
     	
     	
-    	if(secretaria == null && professor == null && aluno == null) {
-    		flash.error("Matricula ou senha inválido");
-    		params.flash();
-    		renderTemplate("Application/index.html");
+    	if(admin.matricula.equals(matricula) && admin.senha.equals(senha)) {
+    		session.put("admin", admin);
+    		renderTemplate("Administradores/portalAdmin.html",admin);
     	} else if(secretaria != null) {
     		session.put("nome", secretaria.nome);
     		session.put("secretaria", secretaria);
@@ -37,6 +40,10 @@ public class SGE extends Controller{
     	} else if(aluno != null) {
     		session.put("aluno", aluno);
     		renderTemplate("Alunos/portal_aluno.html",aluno);
+    	}else {
+    		flash.error("Matricula ou senha inválido");
+    		params.flash();
+    		renderTemplate("Application/index.html");
     	}
     }
     

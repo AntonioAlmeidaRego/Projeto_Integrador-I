@@ -24,10 +24,10 @@ public class Disciplinas extends Controller{
 		
 	}
 	
-	public static void editarDisciplina(Long id) {
+	public static void editarDisciplina(long id) {
 		Disciplina disciplina = Disciplina.findById(id);
-		List<Professor> professor = Professor.findAll();
-		renderTemplate("SGE/cadastro_disciplina.html",disciplina, professor);
+		List<Professor> professores = Professor.findAll();
+		renderTemplate("Disciplinas/cadastro_disciplina.html",disciplina, professores);
 	}
     
 	
@@ -42,7 +42,7 @@ public class Disciplinas extends Controller{
 	    }
 	 
 	  
-	 public static void removerDisciplina(int id) {
+	 public static void removerDisciplina(long id) {
 	    	Disciplina disciplina = Disciplina.findById(id);
 	    	if(disciplina.delete() != null) {
 	    		flash.success("Disciplina removida com sucesso!");

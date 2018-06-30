@@ -1,34 +1,6 @@
 #{extends 'main-secretaria.html' /} #{set title:'SGE - Realizar
 matrícula' /}
 <meta charset="utf-8" />
-
-<!-- Mensagem de Sucesso -->
-#{if flash.success}
-<div class="alert alert-success">
-	<button type="button" class="close" data-dismiss="alert"
-		aria-label="Close">
-		<i class="material-icons">close</i>
-	</button>
-	<span> <b></b>${flash.succes.raw()}
-	</span>
-</div>
-
-#{/if}
-
-
-<!-- Mensagem de erro -->
-
-#{if flash.error}
-<div class="alert alert-danger">
-	<button type="button" class="close" data-dismiss="alert"
-		aria-label="Close">
-		<i class="material-icons">close</i>
-	</button>
-	<span> <b></b>${flash.error.raw()}
-	</span>
-</div>
-#{/if}
-
 <div class="content">
 	<div class="container-fluid">
 		<div class="card">
@@ -282,9 +254,10 @@ matrícula' /}
 
 														<div class="col-md-4">
 															<select name="aluno.turma.id" class="form-control"
-																required> #{list items: turmas, as:'turma'}
-																<option value="${turma?.id}" class="form-control">${turma.anoEscolar}
-																	${turma.nomeTurma}</option> #{/list}
+																required> 
+																#{list items: turmas, as:'turma'}
+																<option value="${turma?.id}" ${(aluno?.id !=null && aluno?.turma?.id == turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
+																#{/list}
 															</select>
 														</div>
 

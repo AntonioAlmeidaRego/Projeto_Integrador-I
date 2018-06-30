@@ -46,6 +46,15 @@
 																	type="text" name="turma.turno" value="${turma?.turno}" class="form-control">
 															</div>
 														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label>Disciplinas</label><br/>
+																#{list items: disciplinas, as:'disciplina'}
+																	<label>${disciplina?.nomeDisciplina}</label>
+																	<input type="checkbox" name="turma.disciplinas.id" value="${disciplina?.id}" ${(turma?.id !=null && turma?.disciplinas?.id == disciplina.id)? 'checked':'' }>
+																#{/list}
+															</div>
+														</div>
 														
 													</div>
 

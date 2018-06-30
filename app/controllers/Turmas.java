@@ -2,13 +2,15 @@ package controllers;
 
 import java.util.List;
 
+import models.Disciplina;
 import models.Turma;
 import play.mvc.Controller;
 
 public class Turmas extends Controller{
 	
 	public static void cadastro_turma() {
-		render();
+		List<Disciplina> disciplinas = Disciplina.findAll();
+		render(disciplinas);
 	}
 	
 	

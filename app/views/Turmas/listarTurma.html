@@ -9,7 +9,7 @@
 		aria-label="Close">
 		<i class="material-icons">close</i>
 	</button>
-	<span> <b></b>${flash.succes.raw()}
+	<span> <b></b>${flash.success.raw()}
 	</span>
 </div>
 
@@ -46,6 +46,7 @@
 									<th>Nome da Turma</th>
 									<th>Número da sala</th>
 									<th>Turno</th>
+									<th>Disciplinas</th>
 									<th>Ações</th>
 							
 								</thead>
@@ -57,6 +58,7 @@
 										<td>${turma.nomeTurma}</td>
 										<td>${turma.numeroSala}</td>
 										<td>${turma.turno}</td>
+										<td>${turma.disciplinas?.nomeDisciplina}</td>
 										<td><a href="@{Turmas.editarTurma(turma.id)}"><i class="material-icons">edit</i></a>
 										<a href="removerTurma?id=${turma.id}"><i class="material-icons">delete_sweep</i></a></td>
 									</tr>

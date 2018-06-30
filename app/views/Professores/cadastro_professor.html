@@ -73,6 +73,17 @@
 																	type="date" name="professor.dataNascimento" value="${professor?.dataNascimento}" class="form-control">
 															</div>
 														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label>Turma</label>
+																<select name="professor.turma.id" class="form-control">
+												 				<option>---Selecione a Turma---</option> 
+																#{list items: turmas, as:'turma'}
+																	<option value="${turma?.id}" ${(professor?.id !=null && professor?.turma?.id == turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
+																#{/list}
+																</select>
+															</div>
+														</div>
 													</div>
 
 
