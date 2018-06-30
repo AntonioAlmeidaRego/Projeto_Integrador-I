@@ -7,6 +7,7 @@ import org.h2.engine.User;
 import models.Aluno;
 import models.Professor;
 import models.Turma;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 
 public class Professores extends Controller{
@@ -20,13 +21,18 @@ public class Professores extends Controller{
 		render(turmas);
 	}
 	
-	public static void editarProfessor(Long id) {
+	public static void editarProfessor(long id) {
 		Professor professor = Professor.findById(id);
 		List<Turma> turmas = Turma.findAll();
 		renderTemplate("Professores/cadastro_professor.html",professor,turmas);
 	}
 	
-	public static void salvarProfessor(Professor professor) {
+	public static void salvarProfessor(@Valid Professor professor) {
+		if(validation.hasErrors()) {
+			validation.keep();
+			params.flash();
+			cadastro_professor();
+		}
     	if(professor.save() != null) {
     		flash.success("Professor salvo com sucesso!");
     		listarProfessor();
@@ -37,19 +43,7 @@ public class Professores extends Controller{
     	
     }
 	
-	/*public static List<Professor> getListaProfessor(){
-    	List<Professor> professores = Professor.findAll();
-    	return professores;
-    }*/
-	
-	/*public static Professor buscaProfessor(long id) {
-    	for(Professor professor : getListaProfessor()) {
-    		if(professor.getId() == id) {
-    			return professor;
-    		}
-    	}
-    	return null;
-    }*/
+	 
 	
 	public static Professor buscaProfessorBD(String matricula, String senha) {
 		return Professor.find("matricula = ? and senha = ?", matricula, senha).first();
@@ -80,5 +74,11 @@ public class Professores extends Controller{
     	render(professores);
      } 
     
+    public  static  void  fotoProfessor(Long  id) {
+	    Professor professor = Professor.findById(id);
+	    notFoundIfNull(professor);
+	    response.setContentTypeIfNotSet(professor.foto.type());
+	    renderBinary(professor.foto.get());
+	}
 	
 }

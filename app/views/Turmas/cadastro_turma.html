@@ -25,18 +25,29 @@
 																 <label
 																	class="bmd-label-floating">Ano escolar</label> <input
 																	type="text" name="turma.anoEscolar" value="${turma?.anoEscolar}" class="form-control">
+																	#{ifError 'turma.anoEscolar'}
+													        	   <div class="invalid-feedback">#{error 'turma.anoEscolar' /}</div>  	   		 
+													        	   #{/ifError}
 															</div>
 														</div>
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Nome da turma</label> <input
 																	type="text" class="form-control" name="turma.nomeTurma" value="${turma?.nomeTurma}">
+																#{ifError 'turma.nomeTurma'}
+													        	   <div class="invalid-feedback">#{error 'turma.nomeTurma' /}</div>  	   		 
+													        	   #{/ifError}
+															
 															</div>
 														</div>
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Número da Sala</label> <input
 																	type="text" name="turma.numeroSala" value="${turma?.numeroSala}" class="form-control">
+															#{ifError 'turma.numeroSala'}
+													        	   <div class="invalid-feedback">#{error 'turma.numeroSala' /}</div>  	   		 
+													        	   #{/ifError}
+															
 															</div>
 														</div>
 														
@@ -44,6 +55,9 @@
 															<div class="form-group">
 																<label class="bmd-label-floating">Turno</label> <input
 																	type="text" name="turma.turno" value="${turma?.turno}" class="form-control">
+																#{ifError 'turma.turno'}
+													        	   <div class="invalid-feedback">#{error 'turma.turno' /}</div>  	   		 
+													        	   #{/ifError}
 															</div>
 														</div>
 														<div class="col-md-3">
@@ -53,6 +67,9 @@
 																	<label>${disciplina?.nomeDisciplina}</label>
 																	<input type="checkbox" name="turma.disciplinas.id" value="${disciplina?.id}" ${(turma?.id !=null && turma?.disciplinas?.id == disciplina.id)? 'checked':'' }>
 																#{/list}
+																#{ifError 'turma.disciplinas'}
+													        	   <div class="invalid-feedback">#{error 'turma.disciplinas' /}</div>  	   		 
+													        	   #{/ifError}
 															</div>
 														</div>
 														

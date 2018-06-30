@@ -28,6 +28,9 @@
 																	type="text" name="disciplina.nomeDisciplina"
 																	value="${disciplina?.nomeDisciplina}"
 																	class="form-control">
+																	#{ifError 'disciplina.nome'}
+													        	   <div class="invalid-feedback">#{error 'disciplina.nome' /}</div>  	   		 
+													        	   #{/ifError}
 															</div>
 														</div>
 														<div class="col-md-12">
@@ -40,6 +43,9 @@
 																	<option value="${professor?.id}" ${(disciplina?.id !=null && disciplina?.professor?.id == professor.id)? 'selected':'' }>${professor?.nome}</option>
 																	#{/list}
 																</select>
+																#{ifError 'disciplina.professores'}
+													        	   <div class="invalid-feedback">#{error 'disciplina.professores' /}</div>  	   		 
+													        	   #{/ifError}
 															</div>
 														</div>
 

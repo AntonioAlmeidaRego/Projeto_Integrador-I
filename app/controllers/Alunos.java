@@ -7,7 +7,7 @@ import models.Aluno;
 import models.Disciplina;
 import models.Professor;
 import models.Turma;
-
+import play.data.validation.Valid;
 import play.db.jpa.GenericModel.JPAQuery;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -32,7 +32,12 @@ public class Alunos extends Controller{
 	}
 	
 	
-	public static void salvarAluno(Aluno aluno) {
+	public static void salvarAluno(@Valid Aluno aluno) {
+		if(validation.hasErrors()) {
+			validation.keep();
+			params.flash();
+			cadastro_aluno();
+		}
     	if(aluno.save() != null) {
     		flash.success("Matrícula efetuada com sucesso");
     		listarAluno();
@@ -41,16 +46,6 @@ public class Alunos extends Controller{
     		listarAluno();
     	}
     }
-	
-	public static void save(Aluno aluno) {
-		if(aluno.save() != null) {
-    		flash.success("Aluno salvo com sucesso!");
-    		listarAlunoDisciplina();
-    	}else {
-    		flash.error("Aluno não foi salvo, tente novamente");
-    		listarAlunoDisciplina();
-    	}
-	}
 	
 		public static void listarAlunoDisciplina() {
 			List<Aluno> alunos = Aluno.findAll();
@@ -104,5 +99,12 @@ public class Alunos extends Controller{
 		
 		public static void main_portal_aluno(Aluno aluno) {
 			render(aluno);
+		}
+		
+		public  static  void  fotoAluno(long  id) {
+		    Aluno aluno = Aluno.findById(id);
+		    notFoundIfNull(aluno);
+		    response.setContentTypeIfNotSet(aluno.foto.type());
+		    renderBinary(aluno.foto.get());
 		}
 }

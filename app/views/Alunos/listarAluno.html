@@ -42,6 +42,7 @@
 						<div class="table-responsive">
 							<table class="table" id="table">
 								<thead class=" text-primary">
+									<th>Foto</th>
 									<th>Nome</th>
 									<th>Matricula</th>
 									<th>Turma</th>
@@ -52,6 +53,7 @@
 								#{list items: alunos, as:'aluno'}
 								<tbody>
 									<tr>
+										<td><img height="150px" width="150px" src="@{Alunos.fotoAluno(aluno.id)}"><br></td>
 										<td>${aluno.nome}</td>
 										<td>${aluno.matricula}</td>
 										<td>${aluno.turma?.nomeTurma}</td>

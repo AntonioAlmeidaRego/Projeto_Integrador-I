@@ -9,7 +9,7 @@
 		aria-label="Close">
 		<i class="material-icons">close</i>
 	</button>
-	<span> <b></b>${flash.succes.raw()}
+	<span> <b></b>${flash.success.raw()}
 	</span>
 </div>
 
@@ -42,6 +42,7 @@
 						<div class="table-responsive">
 							<table class="table" id="table">
 								<thead class=" text-primary">
+									<th>Foto</th>
 									<th>Nome</th>
 									<th>Matricula</th>
 									<th>CPF</th>
@@ -53,6 +54,7 @@
 								#{list items: professores, as:'professor'}
 								<tbody>
 									<tr>
+										<td><img height="150px" width="150px" src="@{Professores.fotoProfessor(professor.id)}"><br></td>
 										<td>${professor.nome}</td>
 										<td>${professor.matricula}</td>
 										<td>${professor.cpf}</td>
