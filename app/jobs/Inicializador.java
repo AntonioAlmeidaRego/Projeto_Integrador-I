@@ -12,7 +12,7 @@ import play.jobs.OnApplicationStart;
 @OnApplicationStart
 public class Inicializador extends Job {
 
-	@Override
+	/*@Override
 	public void doJob() throws Exception {
 		
 		if(Secretaria.count() == 0) {			
@@ -62,5 +62,5 @@ public class Inicializador extends Job {
 			
 
 		}
-	}
+	}*/
 }

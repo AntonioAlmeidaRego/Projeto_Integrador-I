@@ -26,9 +26,9 @@ public class Turma extends Model{
 	@OneToMany(mappedBy="turma")
 	public List<Professor> professores;
 	
-	@ManyToMany
+	/*@ManyToMany
 	@JoinTable(name="turmas_disciplinas")
-	public List<Disciplina> disciplinas;
+	public List<Disciplina> disciplinas;*/
 	
 	
 	

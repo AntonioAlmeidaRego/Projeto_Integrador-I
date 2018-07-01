@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Disciplina;
 import models.Turma;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 
 public class Turmas extends Controller{
@@ -14,7 +15,12 @@ public class Turmas extends Controller{
 	}
 	
 	
-	public static void salvarTurma(Turma turma) {
+	public static void salvarTurma(@Valid Turma turma) {
+		if(validation.hasErrors()) {
+			validation.keep();
+			params.flash();
+			cadastro_turma();
+		}
 		if(turma.save() != null) {
 			flash.success("Turma adicionada com sucesso");
 			listarTurma();
@@ -32,7 +38,7 @@ public class Turmas extends Controller{
 	
 	public static void editarTurma(long id) {
 		Turma turma = Turma.findById(id);
-		renderTemplate("SGE/cadastro_turma.html",turma);
+		renderTemplate("Turmas/cadastro_turma.html",turma);
 	}
 	
 	public static List<Turma> getListaTurma(){

@@ -52,9 +52,9 @@ public class Aluno extends Model{
 	@JoinColumn(name="turma_id")
 	public Turma turma;
 	
-	/*@ManyToMany
+	@ManyToMany
 	@JoinTable(name="alunos_disciplinas")
-	public List<Disciplina> disciplina;*/
+	public List<Disciplina> disciplina;
 	
 	 
 }

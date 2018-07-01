@@ -37,7 +37,7 @@
 																<input type="hidden" value="${professor?.id}"  name="professor.id">
 																 <label
 																	class="bmd-label-floating">Nome</label> <input
-																	type="text" name="professor.nome" value="${professor?.nome}" class="form-control">
+																	type="text" name="professor.nome" value="${professor == null ? flash['professor.nome'] : professor.nome}" class="form-control #{ifError 'professor.nome'} is-invalid#{/ifError}">
 																	#{ifError 'professor.nome'}
 													        	   <div class="invalid-feedback">#{error 'professor.nome' /}</div>  	   		 
 													        	   #{/ifError}
@@ -46,7 +46,7 @@
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Senha</label> <input
-																	type="password" class="form-control" name="professor.senha" value="${professor?.senha}">
+																	type="password" class="form-control #{ifError 'professor.senha'} is-invalid#{/ifError}" name="professor.senha" value="${professor == null ? flash['professor.senha'] : professor.senha}">
 																#{ifError 'professor.senha'}
 													        	   <div class="invalid-feedback">#{error 'professor.senha' /}</div>  	   		 
 													        	   #{/ifError}
@@ -55,7 +55,7 @@
 														<div class="col-md-4">
 															<div class="form-group">
 																<label class="bmd-label-floating">CPF</label> <input
-																	type="text" name="professor.cpf" value="${professor?.cpf}" class="form-control">
+																	type="text" name="professor.cpf" value="${professor == null ? flash['professor.cpf'] : professor.cpf}" class="form-control #{ifError 'professor.cpf'} is-invalid#{/ifError}">
 																#{ifError 'professor.cpf'}
 													        	   <div class="invalid-feedback">#{error 'professor.cpf' /}</div>  	   		 
 													        	   #{/ifError}
@@ -64,7 +64,7 @@
 														<div class="col-md-4">
 															<div class="form-group">
 																<label class="bmd-label-floating">Matricula</label> <input
-																	type="text" name="professor.matricula" value="${professor?.matricula}" class="form-control">
+																	type="text" name="professor.matricula" value="${professor == null ? flash['professor.matricula'] : professor.matricula}" class="form-control #{ifError 'professor.matricula'} is-invalid#{/ifError}">
 															#{ifError 'professor.matricula'}
 													        	   <div class="invalid-feedback">#{error 'professor.matricula' /}</div>  	   		 
 													        	   #{/ifError}
@@ -75,7 +75,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">Rua</label> <input
-																	type="text" name="professor.rua" value="${professor?.rua}" class="form-control">
+																	type="text" name="professor.rua" value="${professor == null ? flash['professor.rua'] : professor.rua}" class="form-control #{ifError 'professor.rua'} is-invalid#{/ifError}">
 															#{ifError 'professor.rua'}
 													        	   <div class="invalid-feedback">#{error 'professor.rua' /}</div>  	   		 
 													        	   #{/ifError}
@@ -85,7 +85,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">Bairro</label> <input
-																	type="text" name="professor.bairro" value="${professor?.bairro}" class="form-control">
+																	type="text" name="professor.bairro" value="${professor == null ? flash['professor.bairro'] : professor.bairro}" class="form-control #{ifError 'professor.bairro'} is-invalid#{/ifError}">
 															#{ifError 'professor.bairro'}
 													        	   <div class="invalid-feedback">#{error 'professor.bairro' /}</div>  	   		 
 													        	   #{/ifError}
@@ -95,7 +95,7 @@
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Tipo Vínculo</label> <input
-																	type="text" name="professor.tipoVinculo" value="${professor?.tipoVinculo}" class="form-control">
+																	type="text" name="professor.tipoVinculo" value="${professor == null ? flash['professor.tipoVinculo'] : professor.tipoVinculo}" class="form-control #{ifError 'professor.tipoVinculo'} is-invalid#{/ifError}">
 															#{ifError 'professor.tipoVinculo'}
 													        	   <div class="invalid-feedback">#{error 'professor.tipoVinculo' /}</div>  	   		 
 													        	   #{/ifError}
@@ -105,7 +105,7 @@
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label">Data de Nascimento</label> <input
-																	type="date" name="professor.dataNascimento" value="${professor?.dataNascimento}" class="form-control">
+																	type="date" name="professor.dataNascimento" value="${professor == null ? flash['professor.dataNascimento'] : professor.dataNascimento}" class="form-control #{ifError 'professor.dataNascimento'} is-invalid#{/ifError}">
 															#{ifError 'professor.dataNascimento'}
 													        	   <div class="invalid-feedback">#{error 'professor.dataNascimento' /}</div>  	   		 
 													        	   #{/ifError}
@@ -117,7 +117,7 @@
 																<select name="professor.turma.id" class="form-control">
 												 				<option>---Selecione a Turma---</option> 
 																#{list items: turmas, as:'turma'}
-																	<option value="${turma?.id}" ${(professor?.id !=null && professor?.turma?.id == turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
+																	<option value="${professor == null ? flash['professor.turma?.id'] : professor.turma?.id}" class="form-control #{ifError 'professor.turma?.id'} is-invalid#{/ifError}" ${(professor?.id !=null && professor?.turma?.id == turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
 																#{/list}
 																</select>
 																#{ifError 'professor.turma'}

@@ -18,7 +18,7 @@ public class Secure extends Controller {
 		boolean seguranca = getControllerAnnotation(Admin.class) != null ||
 	   			getActionAnnotation(Admin.class) != null;
 		
-		if(seguranca == true && secretaria == null || aluno == null || professor == null) {
+		if(seguranca && secretaria == null || aluno == null || professor == null) {
 			flash.error("Por favor, entre com seu login e senha.");
 			Application.index();
 		}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import interceptors.Secure;
 import models.Aluno;
+import models.Professor;
 import models.Secretaria;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -55,7 +56,8 @@ public class Secretarias extends Controller{
 
 	    public static void portal_secretaria() {
 	    	List<Secretaria> secretaria = Secretaria.findAll();
-	    	render(secretaria);
+	    	long alunos = Aluno.count();
+	    	render(secretaria,alunos);
 	    }
 	    
 	    

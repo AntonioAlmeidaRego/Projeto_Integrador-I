@@ -46,6 +46,7 @@
 									<th>Nome</th>
 									<th>Matricula</th>
 									<th>Turma</th>
+									<th>Disciplinas</th>
 									<th>Ações</th>
 								
 								</thead>
@@ -57,6 +58,7 @@
 										<td>${aluno.nome}</td>
 										<td>${aluno.matricula}</td>
 										<td>${aluno.turma?.nomeTurma}</td>
+										<td>${aluno?.disciplina?.nomeDisciplina}</td>
 										<td><a href="@{Alunos.editarAluno(aluno.id)}"><i class="material-icons">edit</i></a>
 										<a href="remover?id=${aluno.id}"><i class="material-icons">delete_sweep</i></a>
 										</td>

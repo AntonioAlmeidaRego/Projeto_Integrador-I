@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Disciplina;
 import models.Professor;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 
 public class Disciplinas extends Controller{
@@ -13,13 +14,23 @@ public class Disciplinas extends Controller{
 		render(professores);
 	}
 	
-	public static void salvarDisciplina(Disciplina disciplina) {
-		if(disciplina.save() != null) {
-			flash.success("Disciplina salva com sucesso!");
-			listarDisciplina();
+	public static void salvarDisciplina(@Valid Disciplina disciplina) {
+		if(validation.hasErrors()) {
+			validation.keep();
+			params.flash();
+			cadastro_disciplina();
+		}
+		if(verificarProfessor(disciplina.professor.id)) {
+			flash.error("Professor já foi salvo, tente novamente!");
+			cadastro_disciplina();
 		}else {
-			flash.error("Disciplina não foi salva, tente novamente!");
-			listarDisciplina();
+			if(disciplina.save() != null) {
+				flash.success("Disciplina salva com sucesso!");
+				listarDisciplina();
+			}else {
+				flash.error("Disciplina não foi salva, tente novamente!");
+				listarDisciplina();
+			}
 		}
 		
 	}
@@ -40,7 +51,6 @@ public class Disciplinas extends Controller{
 	    	List<Disciplina> disciplinas = Disciplina.findAll();
 	    	return disciplinas;
 	    }
-	 
 	  
 	 public static void removerDisciplina(long id) {
 	    	Disciplina disciplina = Disciplina.findById(id);
@@ -52,5 +62,12 @@ public class Disciplinas extends Controller{
 	    		listarDisciplina();
 	    	}
 	    }
-	    
+	 public static boolean verificarProfessor(long id) {
+		 for(Disciplina disciplina : getListaDisciplina()) {
+			 if(disciplina.professor.id == id) {
+				 return true;
+			 }
+		 }
+		 return false;
+	 }
 }
