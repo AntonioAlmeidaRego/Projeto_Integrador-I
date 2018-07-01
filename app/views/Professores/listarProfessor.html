@@ -59,8 +59,11 @@
 										<td>${professor.matricula}</td>
 										<td>${professor.cpf}</td>
 										<td>${professor.tipoVinculo}</td>
-										<td><a href="@{Professores.editarProfessor(professor.id)}"><i class="material-icons">edit</i></a>
-										<a href="removerProfessor?id=${professor.id}"><i class="material-icons">delete_sweep</i></a></td>
+										<td>
+											<a href="@{Professores.editarProfessor(professor.id)}"><i class="material-icons">edit</i></a>
+											<a href="removerProfessor?id=${professor.id}"><i class="material-icons">delete_sweep</i></a>
+											<a class="btn btn-info" title='Detalhes' href="@{Professores.detalhesProfessor(professor.id)}"><i class="fa fa-eye"></i></a>
+										</td>
 									</tr>
 								#{/list}
 								</tbody>

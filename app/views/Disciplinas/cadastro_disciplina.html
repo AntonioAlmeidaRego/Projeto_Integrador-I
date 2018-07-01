@@ -51,7 +51,7 @@
 																	name="disciplina.id"> <label
 																	class="bmd-label-floating">Nome da disciplina</label> <input
 																	type="text" name="disciplina.nomeDisciplina"
-																	value="${aluno == null ? flash['disciplina.nomeDisciplina'] : disciplina.nomeDisciplina}" class="form-control #{ifError 'disciplina.nomeDisciplina'} is-invalid#{/ifError}" >
+																	value="${disciplina == null ? flash['disciplina.nomeDisciplina'] : disciplina.nomeDisciplina}" class="form-control #{ifError 'disciplina.nomeDisciplina'} is-invalid#{/ifError}" >
 																	#{ifError 'disciplina.nome'}
 													        	   <div class="invalid-feedback">#{error 'disciplina.nome' /}</div>  	   		 
 													        	   #{/ifError}

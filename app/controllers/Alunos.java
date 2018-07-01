@@ -19,6 +19,11 @@ public class Alunos extends Controller{
 		render(aluno);
     }
 	
+	public static void detalhesAluno(long id) {
+		Aluno alunos = Aluno.findById(id);
+		render(alunos);
+	}
+	
 	public static void cadastroDisciplinaAluno(){
 		List<Disciplina> disciplinas = Disciplina.findAll();
 		List<Aluno> alunos = Aluno.findAll();

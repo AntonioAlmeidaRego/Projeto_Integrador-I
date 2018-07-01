@@ -59,14 +59,17 @@
 										<td>${aluno.matricula}</td>
 										<td>${aluno.turma?.nomeTurma}</td>
 										<td>${aluno?.disciplina?.nomeDisciplina}</td>
-										<td><a href="@{Alunos.editarAluno(aluno.id)}"><i class="material-icons">edit</i></a>
-										<a href="remover?id=${aluno.id}"><i class="material-icons">delete_sweep</i></a>
+										<td>
+											<a href="@{Alunos.editarAluno(aluno.id)}"><i class="material-icons">edit</i></a>
+											<a href="remover?id=${aluno.id}"><i class="material-icons">delete_sweep</i></a>
+											<a class="btn btn-info" title='Detalhes' href="@{Alunos.detalhesAluno(aluno.id)}"><i class="fa fa-eye"></i></a>
 										</td>
 										
 									</tr>
 								#{/list}
 								</tbody>
 							</table>
+							<a href="@{Alunos.cadastro_aluno}" class="btn btn-primary">Adicionar Novo Aluno</a>
 						</div>
 					</div>
 				</div>

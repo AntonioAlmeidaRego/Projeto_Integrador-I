@@ -15,6 +15,11 @@ public class Professores extends Controller{
 	 public static void portal_professor(Professor professor){
 	    render(professor);
 	 }
+	 
+	 public static void detalhesProfessor(long id) {
+		 Professor professores = Professor.findById(id);
+		 render(professores);
+	 }
 	
 	public static void cadastro_professor(){
 		List<Turma> turmas = Turma.findAll();

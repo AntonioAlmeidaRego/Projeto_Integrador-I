@@ -305,7 +305,7 @@ matrícula' /}
 														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">UF</label> <input
-																	type="text" name="aluno.ufCidade" value="${aluno == null ? flash['aluno.ufCidade'] : aluno.ufCidade}" class="form-control #{ifError 'aluno.ufCidade'} is-invalid#{/ifError}" id="estado1">
+																	type="text" name="aluno.ufCidade" value="${aluno == null ? flash['aluno.ufCidade'] : aluno.ufCidade}" class="form-control #{ifError 'aluno.ufCidade'} is-invalid#{/ifError}" ${aluno?.id != null }  id="estado1">
 																	#{ifError 'aluno.ufCidade'}
 													        	   <div class="invalid-feedback">#{error 'aluno.ufCidade' /}</div>  	   		 
 													        	   #{/ifError}
@@ -316,7 +316,7 @@ matrícula' /}
 															<div class="form-group">
 																<label class="bmd-label-floating">Cidade</label> <input
 																	type="text" name="aluno.cidade"
-																	value="${aluno == null ? flash['aluno.cidade'] : aluno.cidade}" class="form-control #{ifError 'aluno.cidade'} is-invalid#{/ifError}" id="cidade1">
+																	value="${aluno == null ? flash['aluno.cidade'] : aluno.cidade}" class="form-control #{ifError 'aluno.cidade'} is-invalid#{/ifError}" ${aluno?.id != null } id="cidade1">
 																	#{ifError 'aluno.cidade'}
 													        	   <div class="invalid-feedback">#{error 'aluno.cidade' /}</div>  	   		 
 													        	   #{/ifError}
