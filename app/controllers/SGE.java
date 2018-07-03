@@ -28,17 +28,16 @@ public class SGE extends Controller{
     	
     	
     	if(admin.matricula.equals(matricula) && admin.senha.equals(senha)) {
-    		session.put("admin", admin);
+    		session.put("admin", admin.matricula);
     		renderTemplate("Administradores/portalAdmin.html",admin);
     	} else if(secretaria != null) {
     		session.put("nome", secretaria.nome);
-    		session.put("secretaria", secretaria);
     		renderTemplate("Secretarias/portal_secretaria.html",secretaria);
     	} else if(professor != null) {
-    		session.put("professor", professor);
+    		session.put("professor", professor.nome);
     		renderTemplate("Professores/portal_professor.html",professor);
     	} else if(aluno != null) {
-    		session.put("aluno", aluno);
+    		session.put("aluno", aluno.nome);
     		renderTemplate("Alunos/portal_aluno.html",aluno);
     	}else {
     		flash.error("Matricula ou senha inválido");

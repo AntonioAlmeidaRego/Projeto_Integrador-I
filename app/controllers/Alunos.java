@@ -112,4 +112,9 @@ public class Alunos extends Controller{
 		    response.setContentTypeIfNotSet(aluno.foto.type());
 		    renderBinary(aluno.foto.get());
 		}
+		
+		public static void meusDados() {
+			Aluno aluno = Aluno.find("nome =?", session.get("aluno")).first();
+			render(aluno);
+		}
 }

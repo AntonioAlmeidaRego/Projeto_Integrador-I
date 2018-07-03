@@ -48,7 +48,7 @@ public class Secretarias extends Controller{
 	    	}
 	    }
 	    
-		public static void editarSecretaria(Long id) {
+		public static void editarSecretaria(long id) {
 			Secretaria secretaria = Secretaria.findById(id);
 			renderTemplate("Administradores/cadastrarSecretaria.html",secretaria);
 		}
@@ -61,10 +61,15 @@ public class Secretarias extends Controller{
 	    }
 	    
 	    
-	    public static void fotoSecretaria(Long id) {
+	    public static void fotoSecretaria(long id) {
 	    	Secretaria secretaria = Secretaria.findById(id);
 	    	notFoundIfNull(secretaria);
 	    	response.setContentTypeIfNotSet(secretaria.foto.type());
 	    	renderBinary(secretaria.foto.get());
+	    }
+	    
+	    public static void meusDados() {
+	    	Secretaria secretaria = Secretaria.find("nome = ?", session.get("nome")).first();
+	    	render(secretaria);
 	    }
 }

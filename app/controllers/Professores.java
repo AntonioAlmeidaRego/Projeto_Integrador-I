@@ -38,12 +38,15 @@ public class Professores extends Controller{
 			params.flash();
 			cadastro_professor();
 		}
+		if(params.get("excluirFoto") != null) {
+			professor.foto.getFile().delete();
+		}
     	if(professor.save() != null) {
     		flash.success("Professor salvo com sucesso!");
     		listarProfessor();
     	}else {
     		flash.error("Professor não foi salvo, tente novamente");
-    		listarProfessor();
+    		cadastro_professor();
     	}
     	
     }

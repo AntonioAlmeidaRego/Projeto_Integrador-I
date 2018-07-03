@@ -55,6 +55,12 @@ public class Turmas extends Controller{
     		flash.error("Turma não foi removida!");
     		listarTurma();
     	}
-    	
     }
+	
+	public static void detalhesTurma(long id){
+		Turma turmas = Turma.findById(id);
+		render(turmas);
+	}
+	
+	
 }

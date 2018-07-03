@@ -21,7 +21,7 @@ public class Disciplinas extends Controller{
 			cadastro_disciplina();
 		}
 		if(verificarProfessor(disciplina.professor.id)) {
-			flash.error("Professor já foi salvo, tente novamente!");
+			flash.error("Professor(a) já está vinculado a uma disciplina, tente outro(a)!");
 			cadastro_disciplina();
 		}else {
 			if(disciplina.save() != null) {
@@ -63,11 +63,15 @@ public class Disciplinas extends Controller{
 	    	}
 	    }
 	 public static boolean verificarProfessor(long id) {
-		 for(Disciplina disciplina : getListaDisciplina()) {
-			 if(disciplina.professor.id == id) {
-				 return true;
-			 }
+		 Disciplina disciplina = Disciplina.find("professor_id", id).first();
+		 if(disciplina != null) {
+			 return true;
 		 }
 		 return false;
+	 }
+	 
+	 public static void detalhesDisciplina(long id) {
+		 Disciplina disciplinas = Disciplina.findById(id);
+		 render(disciplinas);
 	 }
 }

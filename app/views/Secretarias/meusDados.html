@@ -35,17 +35,16 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header card-header-primary">
-						<h4 class="card-title ">Professores Matriculados</h4>
+						<h4 class="card-title ">${secretaria.nome}</h4>
 				
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
-								#{list items: professores, as:'professor'}
 								<tbody>
 		                            <tr>
 		                                <td>Nome</td>
-		                                <td colspan="3">${professor.nome}</td>
+		                                <td colspan="3">${secretaria.nome}</td>
 		                                <td>Situação</td>
 		                                <td>
 		                                    <span class="status-info">Matriculado(a)</span>                      
@@ -53,33 +52,26 @@
 		                            </tr>
 		                            <tr>
 		                                <td>CPF</td>
-		                                <td colspan="3">${professor.cpf}</td>
+		                                <td colspan="3">${secretaria.cpf}</td>
 		                                <td>Matricula</td>
-		                                <td colspan="3">${professor.matricula}</td>
+		                                <td colspan="3">${secretaria.matricula}</td>
 		                            </tr>
 		                            <tr>
 		                                <td>Rua</td>
-		                                <td colspan="3">${professor.rua}</td>
+		                                <td colspan="3">${secretaria.rua}</td>
 		                                <td>Bairro</td>
-		                                <td colspan="3">${professor.bairro}</td>
+		                                <td colspan="3">${secretaria.bairro}</td>
 		                            </tr>                
 		                            <tr>
-		                                <td>Tipo de Vinculo</td>
-		                                <td colspan="3">${professor.tipoVinculo}</td>
 		                                <td>Data de Nascimento</td>
-		                                <td colspan="3">${professor.dataNascimento}</td>
-		                            </tr>  
-		                            <tr>
-		                                <td>Turma</td>
-		                                <td colspan="3">${professor.turma?.nomeTurma}</td>
-		                                <td>Disciplina Responsável</td>
-		                                <td colspan="3">${professor?.disciplina?.nomeDisciplina}</td>
+		                                <td colspan="5">${secretaria.dataNascimento}</td>
 		                            </tr>  
 		                        </tbody>
-
-								#{/list}
 							</table>
 							<a href="@{Professores.cadastro_professor}" class="btn btn-primary">Adicionar Novo Professor</a>
+							<a href="@{Alunos.cadastro_aluno}" class="btn btn-primary">Adicionar Novo Aluno</a>
+							<a href="@{Disciplinas.cadastro_disciplina}" class="btn btn-primary">Adicionar Nova Disciplina</a>
+							<a href="@{Turmas.cadastro_turma}" class="btn btn-primary">Adicionar Nova Turma</a>
 						</div>
 					</div>
 				</div>

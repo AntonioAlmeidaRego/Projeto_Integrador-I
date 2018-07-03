@@ -1,5 +1,5 @@
-#{extends 'main-secretaria.html' /}
-#{set title:'SGE - Alunos Matriculados' /}
+#{extends 'Alunos/main_portal_aluno.html' /}
+#{set title:'SGE - Portal Aluno' /}
 <meta charset="utf-8" />
 
 <!-- Mensagem de Sucesso -->
@@ -35,13 +35,12 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header card-header-primary">
-						<h4 class="card-title ">Alunos Matriculados</h4>
+						<h4 class="card-title ">${aluno.nome}</h4>
 				
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
-								#{list items: alunos, as:'aluno'}
 								<tbody>
 		                            <tr>
 		                                <td>Nome</td>
@@ -59,11 +58,13 @@
 		                            </tr>
 		                            <tr>
 		                                <td>Turma</td>
-		                                <td colspan="5">${aluno?.turma?.nomeTurma}</td>
+		                                <td colspan="3">${aluno?.turma?.nomeTurma}</td>
+		                                <td>Disciplinas</td>
+		                                <td colspan="3">${aluno?.disciplina?.nomeDisciplina}</td>
 		                            </tr>                
 		                            <tr>
 		                                <td>Data de Nascimento</td>
-		                                <td colspan="3">${aluno.dataNascimento?.format()}</td>
+		                                <td colspan="3">${aluno.dataNascimento}</td>
 		                                <td>Naturalidade</td>
 		                                <td colspan="3">${aluno.naturalidade}</td>
 		                            </tr>  
@@ -93,7 +94,7 @@
 		                            </tr>  
 		                             <tr>
 		                                <td>Data Expedição</td>
-		                                <td colspan="3">${aluno.dataExpedicao?.format()}</td>
+		                                <td colspan="3">${aluno.dataExpedicao}</td>
 		                                <td>Rua</td>
 		                                <td colspan="3">${aluno.rua}</td>
 		                            </tr>  
@@ -115,17 +116,11 @@
 		                                <td>Sexo</td>
 		                                <td colspan="3">${aluno.sexo}</td>
 		                            </tr>  
-		                            <tr>
-		                            	<td>Disciplinas</td>
-										#{list items: alunos.disciplina, as:'aluno'}
-											<td><p>${aluno?.nomeDisciplina}</p></td>
-										#{/list}
-		                            </tr>
 		                        </tbody>
-								#{/list}
-								
 							</table>
-							<a href="@{Alunos.cadastro_aluno}" class="btn btn-primary">Adicionar Novo Aluno</a>
+							<a href="#" class="btn btn-primary">Minhas Notas</a>
+							<a href="#" class="btn btn-primary">Minhas Frequências</a>
+							<a href="#" class="btn btn-primary">Calendário Acadêmico</a>
 						</div>
 					</div>
 				</div>
@@ -133,5 +128,3 @@
 		</div>
 	</div>
 </div>
-
-
