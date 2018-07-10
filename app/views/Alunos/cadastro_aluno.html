@@ -43,8 +43,9 @@ matrícula' /}
 												        
 													   #{/if}
 													   <br>
-													    
+													    <div class="col-md-12">
 													   			<input type="file" value="${aluno?.foto}" name="aluno.foto">
+													   			</div>
 													  
 
 														<div class="col-md-6">
@@ -195,7 +196,7 @@ matrícula' /}
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">CPF</label> <input
-																	type="text" name="aluno.cpf" value="${aluno == null ? flash['aluno.cpf'] : aluno.cpf}" class="form-control #{ifError 'aluno.cpf'} is-invalid#{/ifError}">
+																	type="text" name="aluno.cpf" value="${aluno == null ? flash['aluno.cpf'] : aluno.cpf}" class="form-control #{ifError 'aluno.cpf'} is-invalid#{/ifError}" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF )">
 																	#{ifError 'aluno.cpf'}
 													        	   <div class="invalid-feedback">#{error 'aluno.cpf' /}</div>  	   		 
 													        	   #{/ifError}
@@ -328,7 +329,7 @@ matrícula' /}
 														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">CEP</label> <input
-																	type="text" name="aluno.cep" value="${aluno == null ? flash['aluno.cep'] : aluno.cep}" class="form-control #{ifError 'aluno.cep'} is-invalid#{/ifError}">
+																	type="text" name="aluno.cep" value="${aluno == null ? flash['aluno.cep'] : aluno.cep}" class="form-control #{ifError 'aluno.cep'} is-invalid#{/ifError}" pattern="\d{2}\.\d{3}-\d{3}" onkeydown="javascript: fMasc( this, mCEP )">
 																	#{ifError 'aluno.cep'}
 													        	   <div class="invalid-feedback">#{error 'aluno.cep' /}</div>  	   		 
 													        	   #{/ifError}
