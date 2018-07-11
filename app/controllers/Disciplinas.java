@@ -2,11 +2,16 @@ package controllers;
 
 import java.util.List;
 
+import annotations.Admin;
+import interceptors.Secure;
 import models.Disciplina;
 import models.Professor;
 import play.data.validation.Valid;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@Admin
+@With(Secure.class)
 public class Disciplinas extends Controller{
 	
 	public static void cadastro_disciplina() {

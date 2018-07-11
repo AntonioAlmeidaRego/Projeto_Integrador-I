@@ -4,16 +4,26 @@ import java.util.List;
 
 import org.h2.engine.User;
 
+import annotations.Admin;
+import interceptors.Secure;
 import models.Aluno;
 import models.Professor;
 import models.Turma;
 import play.data.validation.Valid;
 import play.mvc.Controller;
-
+import play.mvc.With;
+@Admin
+@With(Secure.class)
 public class Professores extends Controller{
 	
 	 public static void portal_professor(Professor professor){
 	    render(professor);
+	 }
+	 
+	 public static void diario() {
+		 long id = Long.parseLong(session.get("professor_id"));
+		 Professor professores = Professor.findById(id);
+		 render(professores);
 	 }
 	 
 	 public static void detalhesProfessor(long id) {

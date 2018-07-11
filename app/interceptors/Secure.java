@@ -1,24 +1,29 @@
 package interceptors;
 
-import org.junit.Before;
-
 import annotations.Admin;
 import controllers.Application;
-import models.*;
+import play.mvc.Before;
 import play.mvc.Controller;
 
 public class Secure extends Controller {
 	
 	@Before
 	static void checharAutenticacao() {
-		String secretaria = session.get("secretaria");
+		String secretaria = session.get("nome");
 		String aluno = session.get("aluno");
 		String professor = session.get("professor");
+		String admin = session.get("admin");
 		
 		boolean seguranca = getControllerAnnotation(Admin.class) != null ||
 	   			getActionAnnotation(Admin.class) != null;
 		
-		if(seguranca && secretaria == null || aluno == null || professor == null) {
+		System.out.println(seguranca);
+		System.out.println(session.isEmpty());
+		System.out.println(secretaria);
+		System.out.println(aluno);
+		System.out.println(aluno);
+		
+		if(seguranca && (secretaria == null && aluno == null && professor == null && admin == null)) {
 			flash.error("Por favor, entre com seu login e senha.");
 			Application.index();
 		}

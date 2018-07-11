@@ -2,13 +2,20 @@ package controllers;
 
 import java.util.List;
 
+
+import annotations.Admin;
+import interceptors.Secure;
 import models.Disciplina;
 import models.Turma;
 import play.data.validation.Valid;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@Admin
+@With(Secure.class)
 public class Turmas extends Controller{
 	
+
 	public static void cadastro_turma() {
 		List<Disciplina> disciplinas = Disciplina.findAll();
 		render(disciplinas);

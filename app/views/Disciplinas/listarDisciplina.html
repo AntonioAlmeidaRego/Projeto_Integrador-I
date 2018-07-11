@@ -54,8 +54,8 @@
 										<td>${disciplina?.professor?.nome}</td>
 										<td>
 											<a href="@{Disciplinas.editarDisciplina(disciplina.id)}"><i class="material-icons">edit</i></a>
+											<a href="@{Disciplinas.detalhesDisciplina(disciplina.id)}"><i class="material-icons">visibility</i></a>
 											<a href="removerDisciplina?id=${disciplina.id}"><i class="material-icons">delete_sweep</i></a>
-											<a class="btn btn-info" title='Detalhes' href="@{Disciplinas.detalhesDisciplina(disciplina.id)}"><i class="fa fa-eye"></i></a>
 										</td>
 									</tr>
 								#{/list}

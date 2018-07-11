@@ -52,8 +52,8 @@
 																	class="bmd-label-floating">Nome da disciplina</label> <input
 																	type="text" name="disciplina.nomeDisciplina"
 																	value="${disciplina == null ? flash['disciplina.nomeDisciplina'] : disciplina.nomeDisciplina}" class="form-control #{ifError 'disciplina.nomeDisciplina'} is-invalid#{/ifError}" >
-																	#{ifError 'disciplina.nome'}
-													        	   <div class="invalid-feedback">#{error 'disciplina.nome' /}</div>  	   		 
+																	#{ifError 'disciplina.nomeDisciplina'}
+													        	   <div class="invalid-feedback">#{error 'disciplina.nomeDisciplina' /}</div>  	   		 
 													        	   #{/ifError}
 															</div>
 														</div>
@@ -61,8 +61,7 @@
 															<div class="form-group">
 																<select class="form-control"
 																	name="disciplina.professor.id">
-																	<option>---Selecione o Professor
-																		Responsável---</option> #{list items: professores,
+																	<option value>---Selecione o Professor Responsável---</option> #{list items: professores,
 																	as:'professor'}
 																	<option value="${professor?.id}" ${(disciplina?.id !=null && disciplina?.professor?.id == professor.id)? 'selected':'' }>${professor?.nome}</option>
 																	#{/list}

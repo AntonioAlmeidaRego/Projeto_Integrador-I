@@ -2,16 +2,20 @@ package controllers;
 
 import java.util.List;
 
+import annotations.Admin;
 import interceptors.Secure;
 import models.Aluno;
 import models.Disciplina;
+import models.Nota;
 import models.Professor;
 import models.Turma;
 import play.data.validation.Valid;
 import play.db.jpa.GenericModel.JPAQuery;
+import play.db.jpa.JPABase;
 import play.mvc.Controller;
 import play.mvc.With;
 
+@Admin
 @With(Secure.class)
 public class Alunos extends Controller{
 	
@@ -23,6 +27,15 @@ public class Alunos extends Controller{
 		Aluno alunos = Aluno.findById(id);
 		render(alunos);
 	}
+	
+	public static void boletimAluno() {
+		long id = Long.parseLong(session.get("aluno_id"));
+		Aluno alunos = Aluno.find("id =?", id).first();
+		List<Nota> notas = Nota.find("alunos_id =?", id).fetch();
+		render(alunos, notas);
+	}
+	
+	 
 	
 	public static void cadastroDisciplinaAluno(){
 		List<Disciplina> disciplinas = Disciplina.findAll();
@@ -42,6 +55,9 @@ public class Alunos extends Controller{
 			validation.keep();
 			params.flash();
 			cadastro_aluno();
+		}
+		if(params.get("excluirFoto") != null) {
+			aluno.foto.getFile().delete();
 		}
     	if(aluno.save() != null) {
     		flash.success("Matrícula efetuada com sucesso");
@@ -74,16 +90,6 @@ public class Alunos extends Controller{
 	    	return Aluno.find("matricula = ? and senha = ?", matricula, senha).first();
 	    }
 	    
-	    public static void pesquisarProfessor(String busca) {
-	    	List<Professor> professor = Professor.find("nome like ? or matricula like ?", "%" + busca + "%", "%" + busca + "%").fetch();
-	    	if(professor.isEmpty()) {
-	    		flash.error("Professor não encontrado!");
-	    		renderTemplate("Alunos/portal_aluno.html");
-	    	}else {
-	    		renderTemplate("Alunos/pesquisa.html", professor);
-	    	}
-	    }
-	    
 	    public static void remover(long id) {
 	    	Aluno alunos = Aluno.findById(id);
 	    	if(alunos.delete() != null) {
@@ -100,10 +106,6 @@ public class Alunos extends Controller{
 			List<Turma> turmas = Turma.findAll();
 			List<Disciplina> disciplinas = Disciplina.findAll();
 			renderTemplate("Alunos/cadastro_aluno.html",aluno, turmas, disciplinas);
-		}
-		
-		public static void main_portal_aluno(Aluno aluno) {
-			render(aluno);
 		}
 		
 		public  static  void  fotoAluno(long  id) {

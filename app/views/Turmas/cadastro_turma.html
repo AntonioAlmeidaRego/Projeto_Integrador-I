@@ -33,7 +33,7 @@
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Nome da turma</label> <input
-																	type="text" class="form-control" name="turma.nomeTurma" value="${turma == null ? flash['turma.nomeTurma'] : turma.nomeTurma}" class="form-control #{ifError 'turma.nomeTurma'} is-invalid#{/ifError}">
+																	type="text" name="turma.nomeTurma" value="${turma == null ? flash['turma.nomeTurma'] : turma.nomeTurma}" class="form-control #{ifError 'turma.nomeTurma'} is-invalid#{/ifError}">
 																#{ifError 'turma.nomeTurma'}
 													        	   <div class="invalid-feedback">#{error 'turma.nomeTurma' /}</div>  	   		 
 													        	   #{/ifError}
@@ -55,7 +55,7 @@
 															<div class="form-group">
 																<label class="bmd-label-floating">Turno</label>
 																	<select name="turma.turno" class="form-control">
-																		<option>---Selecione o Turno---</option>
+																		<option value>---Selecione o Turno---</option>
 																		#{if turma?.turno == 'Matutino'}
 																		<option value="Matutino" ${'selected'}>Matutino</option>
 																		<option value="Vespetino">Vespetino</option>

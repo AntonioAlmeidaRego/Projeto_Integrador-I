@@ -1,12 +1,12 @@
 package models;
 
- 
-
- 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -37,6 +37,7 @@ public class Professor extends Model{
 	public String senha;
 	public Blob foto;
 	
+	@Required
 	@ManyToOne
 	@JoinColumn(name="turma_id")
 	public Turma turma;

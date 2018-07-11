@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,22 +18,31 @@ import play.db.jpa.Model;
 
 @Entity
 public class Aluno extends Model{
+	
 	@Required
 	public String nome;
+	
 	@Required
 	public String matricula;
+	
 	@Required
 	public String rua;
+	
 	@Required
 	public String bairro;
+	
 	@Required
-	public int numeroCasa;
+	public String numeroCasa;
+	
 	@Required
 	public String cidade;
+	
 	@Required
 	public String ufCidade;
+	
 	@Required
 	public String cep;
+	
 	@Required
 	public String cpf;
 	
@@ -42,41 +52,60 @@ public class Aluno extends Model{
 	
 	@Required
 	public String senha;
+	
 	@Required
 	public String naturalidade;
+	
 	@Required
 	public String ufNaturalidade;
+	
 	@Required
 	public String sexo;
+	
 	@Required
-	public int certidaoCivilNum;
+	public String certidaoCivilNum;
+	
 	@Required
-	public int folhaCertidao;
+	public String folhaCertidao;
+	
 	@Required
-	public int livroCertidao;
+	public String livroCertidao;
+	
 	@Required
 	public String cartorioCertidao;
+	
 	@Required
-	public int rgNumero;
+	public String rgNumero;
+	
 	@Required
 	public String rgExpedidor;
 	
 	@Required
 	@Temporal(TemporalType.DATE)
 	public Date dataExpedicao;
+	
 	@Required
 	public String nomeMae;
+	
 	@Required
 	public String nomePai;
+	
 	public Blob foto;
 	
+	@Required
 	@ManyToOne
 	@JoinColumn(name="turma_id")
 	public Turma turma;
 	
+	@Required
 	@ManyToMany
 	@JoinTable(name="alunos_disciplinas")
 	public List<Disciplina> disciplina;
 	
+	 
+	@OneToMany(mappedBy="aluno")
+	public List<Nota> notas;
+	
+	 
 	 
 }

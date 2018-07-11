@@ -17,7 +17,7 @@ matrícula' /}
 										<div class="card">
 											<div class="card-body">
 												<form name="form1" action="@{Alunos.salvarAluno}"
-													method="post">
+													method="post" enctype="multipart/form-data">
 													<div class="row">
 														<input type="hidden" value="${aluno?.id}" name="aluno.id">
 
@@ -28,7 +28,7 @@ matrícula' /}
 														<hr></hr>
 														
 														#{if aluno?.foto?.exists()}
-														<div class="col-md-6">
+														<div class="col-md-12">
 															<div class="form-group">
 															   	<img height="150px" width="150px" src="@{Alunos.fotoAluno(aluno.id)}"><br>
 															   	<div class="form-group">
@@ -42,11 +42,11 @@ matrícula' /}
 														</div>
 												        
 													   #{/if}
-													   <br>
-													    <div class="col-md-12">
-													   			<input type="file" value="${aluno?.foto}" name="aluno.foto">
-													   			</div>
-													  
+													   #{else}
+													   <div class="col-md-12">
+													   		<input type="file" value="${aluno?.foto}" name="aluno.foto">
+													   </div>
+													  #{/else}
 
 														<div class="col-md-6">
 															<div class="form-group">
@@ -84,8 +84,8 @@ matrícula' /}
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Naturalidade</label> <input
-																	type="text" name="aluno.naturalidade" id="cidade3"
-																	value="${aluno == null ? flash['aluno.naturalidade'] : aluno.naturalidade}" class="form-control #{ifError 'aluno.naturalidade'} is-invalid#{/ifError}">
+																	type="text" name="aluno.naturalidade"
+																	value="${aluno == null ? flash['aluno.naturalidade'] : aluno.naturalidade}" class="form-control #{ifError 'aluno.naturalidade'} is-invalid#{/ifError}"  ${aluno?.id != null } id="cidade3">
 																	#{ifError 'aluno.naturalidade'}
 													        	   <div class="invalid-feedback">#{error 'aluno.naturalidade' /}</div>  	   		 
 													        	   #{/ifError}
@@ -94,8 +94,8 @@ matrícula' /}
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">UF</label> <input
-																	type="text" name="aluno.ufNaturalidade" id="estado3"
-																	value="${aluno == null ? flash['aluno.ufNaturalidade'] : aluno.ufNaturalidade}" class="form-control #{ifError 'aluno.ufNaturalidade'} is-invalid#{/ifError}">
+																	type="text" name="aluno.ufNaturalidade" 
+																	value="${aluno == null ? flash['aluno.ufNaturalidade'] : aluno.ufNaturalidade}" class="form-control #{ifError 'aluno.ufNaturalidade'} is-invalid#{/ifError}" ${aluno?.id != null } id="estado3">
 																	#{ifError 'aluno.ufNaturalidade'}
 													        	   <div class="invalid-feedback">#{error 'aluno.ufNaturalidade' /}</div>  	   		 
 													        	   #{/ifError}
@@ -105,7 +105,8 @@ matrícula' /}
 														<div class="col-md-3">
 															<div class="form-group">
 															<label>Sexo</label>
-																<select class="form-control" name="aluno.sexo"><option class="form-control">---Selecione o sexo</option>
+																<select class="form-control" name="aluno.sexo">
+																<option class="form-control" value>---Selecione o sexo---</option>
 																#{if aluno?.sexo == 'Masculino'}
 																<option value="Masculino" class="form-control #{ifError 'aluno.sexo'} is-invalid#{/ifError}" ${'selected'}>MASCULINO</option>
 																<option value="Feminino" class="form-control #{ifError 'aluno.sexo'} is-invalid#{/ifError}">FEMININO</option>
@@ -151,8 +152,8 @@ matrícula' /}
 														<div class="col-md-4">
 															<div class="form-group">
 																<label class="bmd-label-floating">Certidão de
-																	Nascimento Nº</label> <input type="text"
-																	name="aluno.certidaoCivilNum"
+																	Nascimento Nº</label> 
+																	<input type="text" name="aluno.certidaoCivilNum"
 																	value="${aluno == null ? flash['aluno.certidaoCivilNum'] : aluno.certidaoCivilNum}" class="form-control #{ifError 'aluno.certidaoCivilNum'} is-invalid#{/ifError}">
 																	#{ifError 'aluno.certidaoCivilNum'}
 													        	   <div class="invalid-feedback">#{error 'aluno.certidaoCivilNum' /}</div>  	   		 
@@ -340,7 +341,8 @@ matrícula' /}
 															<div class="form-group">
 																<label class="bmd-label-floating">TURMA</label>
 																<select name="aluno.turma.id" class="form-control"
-																	required> 
+																	> 
+																	<option value>---Selecione a turma---</option>
 																	#{list items: turmas, as:'turma'}
 																	<option value="${turma?.id}" ${(aluno?.id !=null && aluno?.turma?.id == turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
 																	#{/list}
@@ -356,9 +358,9 @@ matrícula' /}
 																<label class="bmd-label-floating">Disciplinas</label><br/>
 																#{list items: disciplinas, as:'disciplina'}
 																	<label>${disciplina?.nomeDisciplina}</label>
-																	<input type="checkbox" name="aluno.disciplina.id" value="${disciplina?.id}" ${(aluno?.id !=null && aluno?.disciplina?.id == disciplina.id)? checked:'' }>
+																	<input type="checkbox" name="aluno.disciplina.id" value="${disciplina?.id}" ${(aluno?.id !=null && aluno?.disciplina?.contains(disciplina))? 'checked':'' }>
 																#{/list}
-																#{ifError 'turma.disciplinas'}
+																#{ifError 'aluno.disciplinas'}
 													        	   <div class="invalid-feedback">#{error 'aluno.disciplina' /}</div>  	   		 
 													        	   #{/ifError}
 															</div>

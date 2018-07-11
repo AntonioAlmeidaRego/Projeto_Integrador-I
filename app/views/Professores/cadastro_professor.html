@@ -17,7 +17,7 @@
 									<div class="col-md-12">
 										<div class="card">
 											<div class="card-body">
-												<form name="form1" action="@{Professores.salvarProfessor}" method="post">
+												<form name="form1" action="@{Professores.salvarProfessor}" method="post" enctype="multipart/form-data">
 													<div class="row">
 														<div class="col-md-12">
 														#{if professor?.foto?.exists()}
@@ -30,9 +30,9 @@
 													            </div>
 													        </div>
 														   #{/if}
-														   <br>
-														   
-														   <input type="file" value="${professor?.foto}" name="professor.foto">
+														   #{else}
+														   		<input type="file" value="${professor?.foto}" name="professor.foto">
+														   #{/else}
 														   
 															<div class="form-group">
 																<input type="hidden" value="${professor?.id}"  name="professor.id">
@@ -116,7 +116,7 @@
 															<div class="form-group">
 																<label>Turma</label>
 																<select name="professor.turma.id" class="form-control">
-												 				<option>---Selecione a Turma---</option> 
+												 				<option value>---Selecione a Turma---</option> 
 																#{list items: turmas, as:'turma'}
 																	<option value="${turma?.id}" class="form-control" ${(professor?.id !=null && professor?.turma?.id == turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
 																#{/list}

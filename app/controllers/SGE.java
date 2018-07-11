@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import annotations.Admin;
+import interceptors.Secure;
 import models.Administrador;
 import models.Aluno;
 import models.Disciplina;
@@ -11,7 +12,9 @@ import models.Secretaria;
 import models.Turma;
 
 import play.mvc.Controller;
+import play.mvc.With;
 
+ 
 public class SGE extends Controller{
    
     public static void esqueceu() {
@@ -32,12 +35,16 @@ public class SGE extends Controller{
     		renderTemplate("Administradores/portalAdmin.html",admin);
     	} else if(secretaria != null) {
     		session.put("nome", secretaria.nome);
+    		session.put("id", secretaria.id);
     		renderTemplate("Secretarias/portal_secretaria.html",secretaria);
     	} else if(professor != null) {
     		session.put("professor", professor.nome);
+    		session.put("professor_id", professor.id);
     		renderTemplate("Professores/portal_professor.html",professor);
     	} else if(aluno != null) {
     		session.put("aluno", aluno.nome);
+    		session.put("aluno_id", aluno.id);
+    		System.out.println(session.get("aluno_id"));
     		renderTemplate("Alunos/portal_aluno.html",aluno);
     	}else {
     		flash.error("Matricula ou senha inválido");

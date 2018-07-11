@@ -41,11 +41,17 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
-								#{list items: disciplinas.alunos, as:'disciplina'}
+								<thead>
+									<tr>
+										<th>Foto</th>
+										<th>Nome</th>
+									</tr>
+								</thead>
+								#{list items: disciplinas.alunos, as:'aluno'}
 									<tbody>
 			                            <tr>
-			                                <td>Nome</td>
-			                                <td colspan="5">${disciplina?.nome}</td>
+			                            	<td><img class="img-default" src="@{Alunos.fotoAluno(aluno.id)}"></td>
+			                                <td>${aluno?.nome}</td>
 			                            </tr>
 			                        </tbody>
 								#{/list}
@@ -64,11 +70,17 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
-								#{list items: disciplinas.professor, as:'disciplina'}
+								<thead>
+									<tr>
+										<th>Foto</th>
+										<th>Nome</th>
+									</tr>
+								</thead>
+								#{list items: disciplinas.professor, as:'professor'}
 									<tbody>
 			                            <tr>
-			                                <td>Nome</td>
-			                                <td colspan="5">${disciplina?.nome}</td>
+			                            	<td><img class="img-default" src="@{Professores.fotoProfessor(professor.id)}"></td>
+			                                <td>${professor?.nome}</td>
 			                            </tr>
 			                        </tbody>
 								#{/list}

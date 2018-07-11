@@ -43,6 +43,9 @@
 							<table class="table table-striped" id="table">
 								#{list items: alunos, as:'aluno'}
 								<tbody>
+									<tr>
+										<td><img class="icone-default" src="@{Alunos.fotoAluno(aluno.id)}"></td>
+									</tr>
 		                            <tr>
 		                                <td>Nome</td>
 		                                <td colspan="3">${aluno.nome}</td>
@@ -63,7 +66,7 @@
 		                            </tr>                
 		                            <tr>
 		                                <td>Data de Nascimento</td>
-		                                <td colspan="3">${aluno.dataNascimento?.format()}</td>
+		                                <td colspan="3">${aluno.dataNascimento.format("dd/MM/yyyy")}</td>
 		                                <td>Naturalidade</td>
 		                                <td colspan="3">${aluno.naturalidade}</td>
 		                            </tr>  
@@ -93,7 +96,7 @@
 		                            </tr>  
 		                             <tr>
 		                                <td>Data Expedição</td>
-		                                <td colspan="3">${aluno.dataExpedicao?.format()}</td>
+		                                <td colspan="3">${aluno.dataExpedicao.format("dd/MM/yyyy")}</td>
 		                                <td>Rua</td>
 		                                <td colspan="3">${aluno.rua}</td>
 		                            </tr>  

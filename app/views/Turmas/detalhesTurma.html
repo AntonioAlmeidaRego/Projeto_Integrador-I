@@ -41,11 +41,19 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
-								#{list items: turmas.alunos, as:'turma'}
+								<thead>
+									<tr>
+										<th>Foto</th>
+										<th>Nome</th>
+										<th>Detalhes</th>
+									</tr>
+								</thead>
+								#{list items: turmas.alunos, as:'aluno'}
 									<tbody>
 			                            <tr>
-			                                <td>Nome</td>
-			                                <td colspan="5">${turma?.nome}</td>
+			                            	<td><img class="img-default" src="@{Alunos.fotoAluno(aluno.id)}"></td>
+			                                <td>${aluno?.nome}</td>
+			                                <td><a href="@{Alunos.detalhesAluno(aluno.id)}"><i class="material-icons">visibility</i></a></td>
 			                            </tr>
 			                        </tbody>
 								#{/list}
@@ -64,11 +72,19 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
-								#{list items: turmas.professores, as:'turma'}
+								<thead>
+									<tr>
+										<th>Foto</th>
+										<th>Nome</th>
+										<th>Detalhes</th>
+									</tr>
+								</thead>
+								#{list items: turmas.professores, as:'professor'}
 									<tbody>
 			                            <tr>
-			                                <td>Nome</td>
-			                                <td colspan="5">${turma?.nome}</td>
+			                                <td><img class="img-default" src="@{Professores.fotoProfessor(professor.id)}"></td>
+			                                <td>${professor?.nome}</td>
+			                                <td><a href="@{Professores.detalhesProfessor(professor.id)}"><i class="material-icons">visibility</i></a></td>
 			                            </tr>
 			                        </tbody>
 								#{/list}

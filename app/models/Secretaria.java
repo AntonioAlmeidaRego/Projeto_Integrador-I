@@ -14,19 +14,27 @@ import play.db.jpa.Model;
 
 @Entity
 public class Secretaria extends Model{
+	
 	@Required
 	public String nome; 
+	
 	@Required
 	public String matricula; 
+	
 	@Required
 	public String senha; 
+	
 	@Required
 	public String cpf;
+	
 	public Blob foto;
+	
 	@Required
 	public String rua;
+	
 	@Required
 	public String bairro;
+	
 	@Required
 	@Temporal(TemporalType.DATE)
 	public Date dataNascimento;

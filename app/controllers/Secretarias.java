@@ -2,18 +2,25 @@ package controllers;
 
 import java.util.List;
 
+import annotations.Admin;
 import interceptors.Secure;
 import models.Aluno;
 import models.Professor;
 import models.Secretaria;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 
+@Admin
 @With(Secure.class)
 public class Secretarias extends Controller{
 	
-		public static void salvarSecretaria(Secretaria secretaria) {
-			System.out.println(params.get("excluirFoto"));
+		public static void salvarSecretaria(@Valid Secretaria secretaria) {
+			if(validation.hasErrors()) {
+				validation.keep();
+				params.flash();
+				Administradores.cadastrarSecretaria();
+			}
 			if(params.get("excluirFoto") != null) {
 				secretaria.foto.getFile().delete();
 			}
@@ -56,8 +63,9 @@ public class Secretarias extends Controller{
 
 	    public static void portal_secretaria() {
 	    	List<Secretaria> secretaria = Secretaria.findAll();
+	    	long professores = Professor.count();
 	    	long alunos = Aluno.count();
-	    	render(secretaria,alunos);
+	    	render(secretaria,alunos, professores);
 	    }
 	    
 	    
@@ -71,5 +79,21 @@ public class Secretarias extends Controller{
 	    public static void meusDados() {
 	    	Secretaria secretaria = Secretaria.find("nome = ?", session.get("nome")).first();
 	    	render(secretaria);
+	    }
+	    
+	    public static void busca(String busca) {
+	    	Professor professor = Professor.find("nome like ? or matricula like ?", "%" + busca + "%", "%" + busca + "%").first();
+	    	Aluno aluno = Aluno.find("nome like ? or matricula like ?", "%" + busca+ "%", "%"+busca+"%").first();
+	    	if(professor != null) {
+	    		renderTemplate("Secretarias/pesquisa_professor.html", professor);
+	    	}else if(aluno != null) {
+	    		renderTemplate("Secretarias/pesquisa_aluno.html", aluno);
+	    	}else if(aluno == null){
+	    		flash.error("Busca sem Sucesso!");
+	    		renderTemplate("Secretarias/portal_secretaria.html");
+	    	}else if(professor == null) {
+	    		flash.error("Busca sem Sucesso!");
+	    		renderTemplate("Secretarias/portal_secretaria.html");
+	    	}
 	    }
 }

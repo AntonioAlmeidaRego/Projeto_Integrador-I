@@ -54,15 +54,15 @@
 								#{list items: alunos, as:'aluno'}
 								<tbody>
 									<tr>
-										<td><img height="150px" width="150px" src="@{Alunos.fotoAluno(aluno.id)}"><br></td>
+										<td><img class="img-default" src="@{Alunos.fotoAluno(aluno.id)}"></td>
 										<td>${aluno.nome}</td>
 										<td>${aluno.matricula}</td>
 										<td>${aluno.turma?.nomeTurma}</td>
 										<td>${aluno.disciplina?.nomeDisciplina}</td>
 										<td>
 											<a href="@{Alunos.editarAluno(aluno.id)}"><i class="material-icons">edit</i></a>
+											<a href="@{Alunos.detalhesAluno(aluno.id)}"><i class="material-icons">visibility</i></a>
 											<a href="remover?id=${aluno.id}"><i class="material-icons">delete_sweep</i></a>
-											<a class="btn btn-info" title='Detalhes' href="@{Alunos.detalhesAluno(aluno.id)}"><i class="fa fa-eye"></i></a>
 										</td>
 										
 									</tr>

@@ -19,7 +19,7 @@ public class Turma extends Model{
 	@Required
 	public String nomeTurma;
 	@Required
-	public int numeroSala;
+	public Integer numeroSala;
 	@Required
 	public String turno;
 	
@@ -29,11 +29,5 @@ public class Turma extends Model{
 	 
 	@OneToMany(mappedBy="turma")
 	public List<Professor> professores;
-	
-	/*@ManyToMany
-	@JoinTable(name="turmas_disciplinas")
-	public List<Disciplina> disciplinas;*/
-	
-	
 	
 }

@@ -42,6 +42,9 @@
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
 								<tbody>
+									<tr>
+										<td colspan="5"><img class="img-default" src="@{Secretarias.fotoSecretaria(session.get("id"))}"></td>
+									</tr>
 		                            <tr>
 		                                <td>Nome</td>
 		                                <td colspan="3">${secretaria.nome}</td>
@@ -64,7 +67,7 @@
 		                            </tr>                
 		                            <tr>
 		                                <td>Data de Nascimento</td>
-		                                <td colspan="5">${secretaria.dataNascimento}</td>
+		                                <td colspan="5">${secretaria.dataNascimento.format("dd/MM/yyyy")}</td>
 		                            </tr>  
 		                        </tbody>
 							</table>
