@@ -27,13 +27,28 @@ public class Secretaria extends Model{
 	@Required
 	public String cpf;
 	
+	@Required 
+	public String rg;
+	
 	public Blob foto;
+	
+	@Required
+	public String estado;
+	
+	@Required
+	public String cidade;
+	
+	@Required
+	public String numCasa;
 	
 	@Required
 	public String rua;
 	
 	@Required
 	public String bairro;
+	
+	@Required
+	public String cep;
 	
 	@Required
 	@Temporal(TemporalType.DATE)
