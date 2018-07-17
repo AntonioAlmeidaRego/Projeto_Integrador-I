@@ -32,7 +32,7 @@
     -->
       <div class="logo">    
        
-        <a href="#" class="simple-text logo-normal">
+        <a href="@{Administradores.portalAdmin}" class="simple-text logo-normal">
           SGE - Admin
         </a>
       </div>
@@ -41,10 +41,16 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
         <li class="nav-item"><a data-togle="collapse" class="nav-link"
-						href="@{Secretarias.portal_secretaria}">
+						href="@{Administradores.portalAdmin}">
 
-							<p>Bem vindo ${session.get("admin")}</p>
+							<p>${session.get("admin")}</p>
 					</a></li>
+		<li class="nav-item">
+            <a class="nav-link" href="@{Administradores.portalAdmin}">
+              <i class="material-icons">home</i>
+              <p>Home</p>
+            </a>
+          </li>			
           <li class="nav-item">
             <a class="nav-link" href="@{Administradores.cadastrarSecretaria}">
               <i class="material-icons">assignment_ind</i>
@@ -57,12 +63,6 @@
             <a class="nav-link" href="@{Secretarias.listarSecretaria}">
               <i class="material-icons">search</i>
               <p>Consultas</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="@{Administradores.portalAdmin}">
-              <i class="material-icons">settings</i>
-              <p>Configurações do Sistema</p>
             </a>
           </li>
         </ul>
@@ -82,15 +82,6 @@
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="O que você procura?">
-                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                  <i class="material-icons">search</i>
-                  <div class="ripple-container"></div>
-                </button>
-              </div>
-            </form>
             <ul class="navbar-nav">
               
               

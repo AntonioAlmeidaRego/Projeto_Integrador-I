@@ -33,6 +33,7 @@ public class Contatos extends Controller{
 			e.printStackTrace();
 		}
 		email.save();
+		flash.success("Mensagem enviada com sucesso!");
 		detalhes(email.id);
 	}
 	

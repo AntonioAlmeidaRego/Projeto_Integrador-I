@@ -56,7 +56,7 @@
 														<div class="col-md-4">
 															<div class="form-group">
 																<label class="bmd-label-floating">CPF</label> <input
-																	type="text" name="professor.cpf" value="${professor == null ? flash['professor.cpf'] : professor.cpf}" class="form-control #{ifError 'professor.cpf'} is-invalid#{/ifError}">
+																	type="text" name="professor.cpf" value="${professor == null ? flash['professor.cpf'] : professor.cpf}" class="form-control #{ifError 'professor.cpf'} is-invalid#{/ifError}" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF )">
 																#{ifError 'professor.cpf'}
 													        	   <div class="invalid-feedback">#{error 'professor.cpf' /}</div>  	   		 
 													        	   #{/ifError}
@@ -68,6 +68,17 @@
 																	type="text" name="professor.matricula" value="${professor == null ? flash['professor.matricula'] : professor.matricula}" class="form-control #{ifError 'professor.matricula'} is-invalid#{/ifError}">
 															#{ifError 'professor.matricula'}
 													        	   <div class="invalid-feedback">#{error 'professor.matricula' /}</div>  	   		 
+													        	   #{/ifError}
+															
+															</div>
+														</div>
+														
+														<div class="col-md-4">
+															<div class="form-group">
+																<label class="bmd-label-floating">Email</label> <input
+																	type="email" name="professor.email" value="${professor == null ? flash['professor.email'] : professor.email}" class="form-control #{ifError 'professor.email'} is-invalid#{/ifError}">
+															#{ifError 'professor.email'}
+													        	   <div class="invalid-feedback">#{error 'professor.email' /}</div>  	   		 
 													        	   #{/ifError}
 															
 															</div>

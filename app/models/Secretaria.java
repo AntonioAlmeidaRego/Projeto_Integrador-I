@@ -1,19 +1,21 @@
 package models;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import play.data.validation.Email;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
 public class Secretaria extends Model{
+	@Required
+	@Email
+	public String email;
 	
 	@Required
 	public String nome; 

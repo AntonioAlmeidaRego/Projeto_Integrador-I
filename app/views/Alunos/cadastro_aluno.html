@@ -83,16 +83,6 @@ matrícula' /}
 													<div class="row">
 														<div class="col-md-3">
 															<div class="form-group">
-																<label class="bmd-label-floating">Naturalidade</label> <input
-																	type="text" name="aluno.naturalidade"
-																	value="${aluno == null ? flash['aluno.naturalidade'] : aluno.naturalidade}" class="form-control #{ifError 'aluno.naturalidade'} is-invalid#{/ifError}"  ${aluno?.id != null } id="cidade3">
-																	#{ifError 'aluno.naturalidade'}
-													        	   <div class="invalid-feedback">#{error 'aluno.naturalidade' /}</div>  	   		 
-													        	   #{/ifError}
-															</div>
-														</div>
-														<div class="col-md-3">
-															<div class="form-group">
 																<label class="bmd-label-floating">UF</label> <input
 																	type="text" name="aluno.ufNaturalidade" 
 																	value="${aluno == null ? flash['aluno.ufNaturalidade'] : aluno.ufNaturalidade}" class="form-control #{ifError 'aluno.ufNaturalidade'} is-invalid#{/ifError}" ${aluno?.id != null } id="estado3">
@@ -101,6 +91,18 @@ matrícula' /}
 													        	   #{/ifError}
 															</div>
 														</div>
+													
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Naturalidade</label> <input
+																	type="text" name="aluno.naturalidade"
+																	value="${aluno == null ? flash['aluno.naturalidade'] : aluno.naturalidade}" class="form-control #{ifError 'aluno.naturalidade'} is-invalid#{/ifError}"  ${aluno?.id != null } id="cidade3">
+																	#{ifError 'aluno.naturalidade'}
+													        	   <div class="invalid-feedback">#{error 'aluno.naturalidade' /}</div>  	   		 
+													        	   #{/ifError}
+															</div>
+														</div>
+														
 
 														<div class="col-md-3">
 															<div class="form-group">
@@ -132,6 +134,16 @@ matrícula' /}
 																	value="${aluno == null ? flash['aluno.matricula'] : aluno.matricula}" class="form-control #{ifError 'aluno.matricula'} is-invalid#{/ifError}">
 																	#{ifError 'aluno.matricula'}
 													        	   <div class="invalid-feedback">#{error 'aluno.matricula' /}</div>  	   		 
+													        	   #{/ifError}
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Email</label> <input
+																	type="email" name="aluno.email"
+																	value="${aluno == null ? flash['aluno.email'] : aluno.email}" class="form-control #{ifError 'aluno.email'} is-invalid#{/ifError}">
+																	#{ifError 'aluno.email'}
+													        	   <div class="invalid-feedback">#{error 'aluno.email' /}</div>  	   		 
 													        	   #{/ifError}
 															</div>
 														</div>
@@ -197,7 +209,7 @@ matrícula' /}
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">CPF</label> <input
-																	type="text" name="aluno.cpf" value="${aluno == null ? flash['aluno.cpf'] : aluno.cpf}" class="form-control #{ifError 'aluno.cpf'} is-invalid#{/ifError}" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF )">
+																	type="text" name="aluno.cpf" value="${aluno == null ? flash['aluno.cpf'] : aluno.cpf}" class="form-control #{ifError 'aluno.cpf'} is-invalid#{/ifError}" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF )">
 																	#{ifError 'aluno.cpf'}
 													        	   <div class="invalid-feedback">#{error 'aluno.cpf' /}</div>  	   		 
 													        	   #{/ifError}
@@ -358,11 +370,11 @@ matrícula' /}
 																<label class="bmd-label-floating">Disciplinas</label><br/>
 																#{list items: disciplinas, as:'disciplina'}
 																	<label>${disciplina?.nomeDisciplina}</label>
-																	<input type="checkbox" name="aluno.disciplina.id" value="${disciplina?.id}" ${(aluno?.id !=null && aluno?.disciplina?.contains(disciplina))? 'checked':'' }>
+																	<input type="checkbox" name="aluno.disciplinas.id" value="${disciplina?.id}" ${(aluno?.id !=null && aluno?.disciplinas?.contains(disciplina))? 'checked':'' }>
 																#{/list}
 																#{ifError 'aluno.disciplinas'}
-													        	   <div class="invalid-feedback">#{error 'aluno.disciplina' /}</div>  	   		 
-													        	   #{/ifError}
+													        	   <div class="invalid-feedback">#{error 'aluno.disciplinas' /}</div>  	   		 
+													        	#{/ifError}
 															</div>
 														</div>
 

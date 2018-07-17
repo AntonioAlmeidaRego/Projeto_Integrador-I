@@ -1,5 +1,5 @@
 #{extends 'main-secretaria.html' /}
-#{set title:'SGE - Alunos Matriculados' /}
+#{set title:'SGE - Meus Dados' /}
 <meta charset="utf-8" />
 
 <!-- Mensagem de Sucesso -->
@@ -43,7 +43,7 @@
 							<table class="table table-striped" id="table">
 								<tbody>
 									<tr>
-										<td colspan="5"><img class="img-default" src="@{Secretarias.fotoSecretaria(session.get("id"))}"></td>
+										<td><img class="img-default" src="@{Secretarias.fotoSecretaria(session.get("id"))}"></td>
 									</tr>
 		                            <tr>
 		                                <td>Nome</td>
@@ -60,15 +60,33 @@
 		                                <td colspan="3">${secretaria.matricula}</td>
 		                            </tr>
 		                            <tr>
+		                                <td>Data de Nascimento</td>
+		                                <td colspan="3">${secretaria.dataNascimento.format("dd/MM/yyyy")}</td>
+		                                <td>RG</td>
+		                                <td colspan="3">${secretaria.rg}</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Email</td>
+		                                <td colspan="3">${secretaria.email}</td>
 		                                <td>Rua</td>
 		                                <td colspan="3">${secretaria.rua}</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Estado</td>
+		                                <td colspan="3">${secretaria.estado}</td>
+		                                <td>Cidade</td>
+		                                <td colspan="3">${secretaria.cidade}</td>
+		                            </tr>   
+		                            <tr>
 		                                <td>Bairro</td>
 		                                <td colspan="3">${secretaria.bairro}</td>
+		                                <td>Número</td>
+		                                <td colspan="3">${secretaria.numCasa}</td>
 		                            </tr>                
 		                            <tr>
-		                                <td>Data de Nascimento</td>
-		                                <td colspan="5">${secretaria.dataNascimento.format("dd/MM/yyyy")}</td>
-		                            </tr>  
+		                                <td>CEP</td>
+		                                <td colspan="5">${secretaria.cep}</td>
+		                            </tr>    
 		                        </tbody>
 							</table>
 							<a href="@{Professores.cadastro_professor}" class="btn btn-primary">Adicionar Novo Professor</a>

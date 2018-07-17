@@ -17,7 +17,7 @@ public class Disciplina extends Model{
 	@Required
 	public String nomeDisciplina;
 	
-	@ManyToMany(mappedBy="disciplina")
+	@ManyToMany(mappedBy="disciplinas")
 	public List<Aluno> alunos;
 	
 	@OneToOne
