@@ -27,6 +27,15 @@ matrícula' /}
 														</div>
 														<hr></hr>
 														
+														<div class="col-md-8">
+															<div class="form-group">
+																<input type="hidden" value="${secretaria?.id}"
+																	name="secretaria.id"> <label
+																	class="bmd-label-floating">Foto</label>
+																	
+															</div>
+														</div>
+														
 														#{if aluno?.foto?.exists()}
 														<div class="col-md-12">
 															<div class="form-group">
@@ -48,7 +57,7 @@ matrícula' /}
 													   </div>
 													  #{/else}
 
-														<div class="col-md-6">
+														<div class="col-md-10">
 															<div class="form-group">
 																<label class="bmd-label-floating">Nome completo
 																</label> <input type="text" name="aluno.nome"
@@ -59,7 +68,7 @@ matrícula' /}
 															</div>
 														</div>
 
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<div class="form-group">
 																<label class="bmd-label">Data de Nascimento</label> <input
 																	type="date" name="aluno.dataNascimento"
@@ -69,42 +78,7 @@ matrícula' /}
 													        	   #{/ifError}
 															</div>
 														</div>
-														<div class="col-md-3">
-															<div class="form-group">
-																<label class="bmd-label-floating">Senha</label> <input
-																	type="password" name="aluno.senha"
-																	value="${aluno == null ? flash['aluno.senha'] : aluno.senha}" class="form-control #{ifError 'aluno.senha'} is-invalid#{/ifError}">
-																	#{ifError 'aluno.senha'}
-													        	   <div class="invalid-feedback">#{error 'aluno.senha' /}</div>  	   		 
-													        	   #{/ifError}
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-md-3">
-															<div class="form-group">
-																<label class="bmd-label-floating">UF</label> <input
-																	type="text" name="aluno.ufNaturalidade" 
-																	value="${aluno == null ? flash['aluno.ufNaturalidade'] : aluno.ufNaturalidade}" class="form-control #{ifError 'aluno.ufNaturalidade'} is-invalid#{/ifError}" ${aluno?.id != null } id="estado3">
-																	#{ifError 'aluno.ufNaturalidade'}
-													        	   <div class="invalid-feedback">#{error 'aluno.ufNaturalidade' /}</div>  	   		 
-													        	   #{/ifError}
-															</div>
-														</div>
-													
-														<div class="col-md-3">
-															<div class="form-group">
-																<label class="bmd-label-floating">Naturalidade</label> <input
-																	type="text" name="aluno.naturalidade"
-																	value="${aluno == null ? flash['aluno.naturalidade'] : aluno.naturalidade}" class="form-control #{ifError 'aluno.naturalidade'} is-invalid#{/ifError}"  ${aluno?.id != null } id="cidade3">
-																	#{ifError 'aluno.naturalidade'}
-													        	   <div class="invalid-feedback">#{error 'aluno.naturalidade' /}</div>  	   		 
-													        	   #{/ifError}
-															</div>
-														</div>
-														
-
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<div class="form-group">
 															<label>Sexo</label>
 																<select class="form-control" name="aluno.sexo">
@@ -127,6 +101,33 @@ matrícula' /}
 													        	   #{/ifError}		
 															</div>
 														</div>
+														
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">UF</label> <input
+																	type="text" name="aluno.ufNaturalidade" 
+																	value="${aluno == null ? flash['aluno.ufNaturalidade'] : aluno.ufNaturalidade}" class="form-control #{ifError 'aluno.ufNaturalidade'} is-invalid#{/ifError}" ${aluno?.id != null } id="estado3">
+																	#{ifError 'aluno.ufNaturalidade'}
+													        	   <div class="invalid-feedback">#{error 'aluno.ufNaturalidade' /}</div>  	   		 
+													        	   #{/ifError}
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Naturalidade</label> <input
+																	type="text" name="aluno.naturalidade"
+																	value="${aluno == null ? flash['aluno.naturalidade'] : aluno.naturalidade}" class="form-control #{ifError 'aluno.naturalidade'} is-invalid#{/ifError}"  ${aluno?.id != null } id="cidade3">
+																	#{ifError 'aluno.naturalidade'}
+													        	   <div class="invalid-feedback">#{error 'aluno.naturalidade' /}</div>  	   		 
+													        	   #{/ifError}
+															</div>
+														</div>
+														
+														
+														
+													</div>
+													<div class="row">
+																					
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Matrícula</label> <input
@@ -138,6 +139,16 @@ matrícula' /}
 															</div>
 														</div>
 														<div class="col-md-3">
+															<div class="form-group">
+																<label class="bmd-label-floating">Senha</label> <input
+																	type="password" name="aluno.senha"
+																	value="${aluno == null ? flash['aluno.senha'] : aluno.senha}" class="form-control #{ifError 'aluno.senha'} is-invalid#{/ifError}">
+																	#{ifError 'aluno.senha'}
+													        	   <div class="invalid-feedback">#{error 'aluno.senha' /}</div>  	   		 
+													        	   #{/ifError}
+															</div>
+														</div>
+														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">Email</label> <input
 																	type="email" name="aluno.email"

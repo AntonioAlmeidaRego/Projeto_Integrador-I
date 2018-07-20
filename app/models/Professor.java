@@ -28,11 +28,28 @@ public class Professor extends Model{
 	@Required
 	public String matricula;
 	@Required
+	public String formacao;
+	@Required
+	public String sexo;
+	@Required
 	public String rua;
+	@Required
+	public String numeroCasa;
 	@Required
 	public String bairro;
 	@Required
+	public String uf;
+	@Required
+	public String cidade;
+	@Required
 	public String cpf;
+	@Required
+	public String rg;
+	@Required
+	public String ExpedidorRg;
+	@Required
+	@Temporal(TemporalType.DATE)
+	public Date dataExpedicao;
 	@Required
 	@Temporal(TemporalType.DATE)
 	public Date dataNascimento;
