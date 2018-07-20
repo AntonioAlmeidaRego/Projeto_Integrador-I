@@ -367,7 +367,7 @@ matrícula' /}
 																	> 
 																	<option value>---Selecione a turma---</option>
 																	#{list items: turmas, as:'turma'}
-																	<option value="${turma?.id}" ${(aluno?.id !=null && aluno?.turma?.id == turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
+																	<option value="${turma?.id}" ${(aluno?.id !=null && aluno?.turma?.id == turma.id)? 'selected':'' }>${turma.anoEscolar}${turma.nomeTurma}</option>
 																	#{/list}
 																</select>
 																#{ifError 'aluno.turma'}

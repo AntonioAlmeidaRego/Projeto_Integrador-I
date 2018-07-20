@@ -22,8 +22,6 @@ public class Professor extends Model{
 	public String email;
 	
 	@Required
-	public String tipoVinculo;
-	@Required
 	public String nome;
 	@Required
 	public String matricula;

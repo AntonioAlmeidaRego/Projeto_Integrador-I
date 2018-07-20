@@ -19,7 +19,7 @@
 											<div class="card-body">
 												<form name="form1" action="@{Turmas.salvarTurma}" method="post">
 													<div class="row">
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<div class="form-group">
 																<input type="hidden" value="${turma?.id}"  name="turma.id">
 																 <label
@@ -51,10 +51,10 @@
 															</div>
 														</div>
 														
-														<div class="col-md-3">
+														<div class="col-md-4">
 															<div class="form-group">
 																<label class="bmd-label-floating">Turno</label>
-																	<select name="turma.turno" class="form-control">
+																	<select class="form-control" name="turma.turno" >
 																		<option value>---Selecione o Turno---</option>
 																		#{if turma?.turno == 'Matutino'}
 																		<option value="Matutino" ${'selected'}>Matutino</option>
@@ -84,8 +84,6 @@
 														</div>
 														
 													</div>
-
-
 													<button type="submit" class="btn btn-success pull-right">Cadastrar</button>
 													<button type="reset" class="btn btn-primary pull-right">Limpar
 														Campos</button>
@@ -105,4 +103,3 @@
 	</div>
 </div>
 
-	

@@ -143,7 +143,7 @@ professor' /}
 														<div class="col-md-3">
 															<div class="form-group">
 																<label class="bmd-label-floating">Formação</label> <input
-																	type="email" name="professor.formacao"
+																	type="text" name="professor.formacao"
 																	value="${professor == null ? flash['professor.formacao'] : professor.formacao}"
 																	class="form-control #{ifError 'professor.formacao'} is-invalid#{/ifError}">
 																#{ifError 'professor.formacao'}
@@ -279,7 +279,7 @@ professor' /}
 																	<option value>---Selecione a Turma---</option> #{list
 																	items: turmas, as:'turma'}
 																	<option value="${turma?.id}" class="form-control"
-																		${(professor?.id !=null && professor?.turma?.id==turma.id)? 'selected':'' }>${turma.nomeTurma}</option>
+																		${(professor?.id !=null && professor?.turma?.id==turma.id)? 'selected':'' }>${turma.anoEscolar} ${turma.nomeTurma}</option>
 																	#{/list}
 																</select> #{ifError 'professor.turma'}
 																<div class="invalid-feedback">#{error
