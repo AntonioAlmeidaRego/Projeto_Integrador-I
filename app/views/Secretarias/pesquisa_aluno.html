@@ -48,25 +48,86 @@
 		                            <tr>
 		                                <td>Nome</td>
 		                                <td colspan="3">${aluno.nome}</td>
+		                                <td>Situação</td>
+		                                <td>
+		                                    <span class="status-info">Matriculado(a)</span>                      
+		                                </td>
 		                            </tr>
 		                            <tr>
-		                                <td>CPF</td>
-		                                <td colspan="3">${aluno.cpf}</td>
-		                                <td>Matricula</td>
-		                                <td colspan="3">${aluno.matricula}</td>
+		                                <td>Nome da Mãe</td>
+		                                <td colspan="3">${aluno.nomeMae}</td>
+		                                <td>Nome do Pai</td>
+		                                <td colspan="3">${aluno.nomePai}</td>
 		                            </tr>
 		                            <tr>
-		                                <td>Rua</td>
-		                                <td colspan="3">${aluno.rua}</td>
-		                                <td>Bairro</td>
-		                                <td colspan="3">${aluno.bairro}</td>
+		                                <td>Turma</td>
+		                                <td colspan="3">${aluno?.turma?.nomeTurma}</td>
+		                                <td>Email</td>
+		                                <td colspan="3">${aluno?.email}</td>
 		                            </tr>                
 		                            <tr>
 		                                <td>Data de Nascimento</td>
-		                                <td colspan="5">${aluno.dataNascimento.format("dd/MM/yyyy")}</td>
+		                                <td colspan="3">${aluno.dataNascimento.format("dd/MM/yyyy")}</td>
+		                                <td>Naturalidade</td>
+		                                <td colspan="3">${aluno.naturalidade}</td>
 		                            </tr>  
+		                             <tr>
+		                                <td>Matricula</td>
+		                                <td colspan="3">${aluno.matricula}</td>
+		                                <td>Certidão de	Nascimento Nº</td>
+		                                <td colspan="3">${aluno.certidaoCivilNum}</td>
+		                            </tr>  
+		                             <tr>
+		                                <td>Folha de Certidão</td>
+		                                <td colspan="3">${aluno.folhaCertidao}</td>
+		                                <td>Livro Certidão</td>
+		                                <td colspan="3">${aluno.livroCertidao}</td>
+		                            </tr>  
+		                             <tr>
+		                                <td>Cartório</td>
+		                                <td colspan="3">${aluno.cartorioCertidao}</td>
+		                                <td>CPF</td>
+		                                <td colspan="3">${aluno.cpf}</td>
+		                            </tr>  
+		                             <tr>
+		                                <td>RG</td>
+		                                <td colspan="3">${aluno.rgNumero}</td>
+		                                <td>Órgão Expedidor</td>
+		                                <td colspan="3">${aluno.rgExpedidor}</td>
+		                            </tr>  
+		                             <tr>
+		                                <td>Data Expedição</td>
+		                                <td colspan="3">${aluno.dataExpedicao.format("dd/MM/yyyy")}</td>
+		                                <td>Rua</td>
+		                                <td colspan="3">${aluno.rua}</td>
+		                            </tr>  
+		                             <tr>
+		                                <td>Número da Casa</td>
+		                                <td colspan="3">${aluno.numeroCasa}</td>
+		                                <td>Bairro</td>
+		                                <td colspan="3">${aluno.bairro}</td>
+		                            </tr>  
+		                            <tr>
+		                            	<td>Estado</td>
+		                                <td colspan="3">${aluno.ufCidade}</td>
+		                                <td>Cidade</td>
+		                                <td colspan="3">${aluno.cidade}</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Cep</td>
+		                                <td colspan="3">${aluno.cep}</td>
+		                                <td>Sexo</td>
+		                                <td colspan="3">${aluno.sexo}</td>
+		                            </tr>  
+		                            
 		                        </tbody>
 							</table>
+							<p>
+		                        Disciplinas
+								#{list items: aluno.disciplinas, as:'aluno'}
+									<p>${aluno?.nomeDisciplina}</p>
+								#{/list}
+							</p>
 						</div>
 					</div>
 				</div>

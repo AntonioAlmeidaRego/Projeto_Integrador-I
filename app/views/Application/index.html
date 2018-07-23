@@ -18,13 +18,53 @@
 	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/assets/vendor/select2/select2.min.css'}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/assets/css/util.css'}">
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/assets/css/main.css'}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="@{'public/stylesheets/fonts.googleapis.css'}" />
+<!--===============================================================================================-->	
+	<link rel="stylesheet" href="@{'public/stylesheets/font-awesome.min.css'}">
+<!--===============================================================================================-->
+	<link href="@{'public/stylesheets/assets/css/material-dashboard.css'}" rel="stylesheet" />
+<!--===============================================================================================-->
+	<link href="@{'public/stylesheets/assets/demo/demo.css'}" rel="stylesheet" />
+<!--===============================================================================================-->
+	<link href="@{'/public/datatables/dataTables.bootstrap4.css'}" rel="stylesheet">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 <!--===============================================================================================-->
 </head>
 <body>
+			<!-- Mensagem de Sucesso -->
+	#{if flash.success}
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close">
+			<i class="material-icons">close</i>
+		</button>
+		<span> <b></b>${flash.success.raw()}
+		</span>
+	</div>
 	
+	#{/if}
+	
+	
+	<!-- Mensagem de erro -->
+	
+	#{if flash.error}
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close">
+			<i class="material-icons">close</i>
+		</button>
+		<span> <b></b>${flash.error.raw()}
+		</span>
+	</div>
+	#{/if}
 	<div class="limiter">
+	
 		<div class="container-login100">
+		
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="@{'/public/images/logo-sge.png'}" alt="IMG">

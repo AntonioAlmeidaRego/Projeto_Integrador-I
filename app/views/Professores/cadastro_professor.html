@@ -253,7 +253,7 @@ professor' /}
 																<label class="bmd-label-floating">UF</label> <input
 																	type="text" name="professor.uf"
 																	value="${professor == null ? flash['professor.uf'] : professor.uf}"
-																	class="form-control #{ifError 'professor.uf'} is-invalid#{/ifError}" id="estado3">
+																	class="form-control #{ifError 'professor.uf'} is-invalid#{/ifError}" ${professor?.id != null } id="estado3">
 																#{ifError 'professor.uf'}
 																<div class="invalid-feedback">#{error
 																	'professor.uf' /}</div>
@@ -265,7 +265,7 @@ professor' /}
 																<label class="bmd-label-floating">Cidade</label> <input
 																	type="text" name="professor.cidade"
 																	value="${professor == null ? flash['professor.cidade'] : professor.cidade}"
-																	class="form-control #{ifError 'professor.cidade'} is-invalid#{/ifError}" id="cidade3">
+																	class="form-control #{ifError 'professor.cidade'} is-invalid#{/ifError}" ${professor?.id != null } id="cidade3">
 																#{ifError 'professor.cidade'}
 																<div class="invalid-feedback">#{error
 																	'professor.cidade' /}</div>
@@ -279,7 +279,7 @@ professor' /}
 																	<option value>---Selecione a Turma---</option> #{list
 																	items: turmas, as:'turma'}
 																	<option value="${turma?.id}" class="form-control"
-																		${(professor?.id !=null && professor?.turma?.id==turma.id)? 'selected':'' }>${turma.anoEscolar} ${turma.nomeTurma}</option>
+																		${(professor?.id !=null && professor?.turma?.id == turma.id )? 'selected':'' }>${turma.anoEscolar} ${turma.nomeTurma}</option>
 																	#{/list}
 																</select> #{ifError 'professor.turma'}
 																<div class="invalid-feedback">#{error

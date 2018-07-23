@@ -5,6 +5,7 @@ import java.util.List;
 import annotations.Admin;
 import interceptors.Secure;
 import models.Aluno;
+import models.Disciplina;
 import models.Professor;
 import models.Secretaria;
 import play.data.validation.Valid;
@@ -85,9 +86,12 @@ public class Secretarias extends Controller{
 	    	Professor professor = Professor.find("nome like ? or matricula like ?", "%" + busca + "%", "%" + busca + "%").first();
 	    	Aluno aluno = Aluno.find("nome like ? or matricula like ?", "%" + busca+ "%", "%"+busca+"%").first();
 	    	if(professor != null) {
+	    		flash.success("Professor(a) Encontrado!");
 	    		renderTemplate("Secretarias/pesquisa_professor.html", professor);
 	    	}else if(aluno != null) {
-	    		renderTemplate("Secretarias/pesquisa_aluno.html", aluno);
+	    		flash.success("Aluno(a) Encontrado!");
+	    		List<Disciplina> disciplinas = Disciplina.findAll();
+	    		renderTemplate("Secretarias/pesquisa_aluno.html", aluno, disciplinas);
 	    	}else if(aluno == null){
 	    		flash.error("Busca sem Sucesso!");
 	    		renderTemplate("Secretarias/portal_secretaria.html");

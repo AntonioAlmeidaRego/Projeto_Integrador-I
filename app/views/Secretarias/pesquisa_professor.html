@@ -45,9 +45,13 @@
 									<tr>
 										<td colspan="5"><img class="img-default" src="@{Professores.fotoProfessor(professor.id)}"></td>
 									</tr>
-		                            <tr>
+		                             <tr>
 		                                <td>Nome</td>
 		                                <td colspan="3">${professor.nome}</td>
+		                                <td>Situação</td>
+		                                <td>
+		                                    <span class="status-info">Matriculado(a)</span>                      
+		                                </td>
 		                            </tr>
 		                            <tr>
 		                                <td>CPF</td>
@@ -62,9 +66,21 @@
 		                                <td colspan="3">${professor.bairro}</td>
 		                            </tr>                
 		                            <tr>
+		                                <td>Sexo</td>
+		                                <td colspan="3">${professor.sexo}</td>
 		                                <td>Data de Nascimento</td>
-		                                <td colspan="5">${professor.dataNascimento.format("dd/MM/yyyy")}</td>
+		                                <td colspan="3">${professor.dataNascimento.format("dd/MM/yyyy")}</td>
 		                            </tr>  
+		                            <tr>
+		                                <td>Turma</td>
+		                                <td colspan="3">${professor.turma?.nomeTurma}</td>
+		                                <td>Disciplina Responsável</td>
+		                                <td colspan="3">${professor?.disciplina?.nomeDisciplina}</td>
+		                            </tr>  
+		                            <tr>
+		                            	<td>Email</td>
+		                            	<td colspan="5">${professor?.email}</td>
+		                            </tr>
 		                        </tbody>
 							</table>
 						</div>
