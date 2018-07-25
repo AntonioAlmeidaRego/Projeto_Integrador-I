@@ -41,22 +41,24 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped" id="table">
-								<thead>
+								<thead class=" text-primary">
 									<tr>
 										<th>Foto</th>
 										<th>Nome</th>
 										<th>Ação</th>
 									</tr>
 								</thead>
-								#{list items: disciplinas.alunos, as:'aluno'}
+								
 									<tbody>
+									#{list items: disciplinas.alunos, as:'aluno'}
 			                            <tr>
 			                            	<td><img class="img-default" src="@{Alunos.fotoAluno(aluno.id)}"></td>
 			                                <td>${aluno?.nome}</td>
 			                                <td><a href="@{Alunos.detalhesAluno(aluno.id)}"><i class="material-icons">visibility</i></a></td>
 			                            </tr>
+			                        #{/list}    
 			                        </tbody>
-								#{/list}
+								
 								#{else}
 								<p>Disciplina sem Alunos Vínculados</p>
 								#{/else}
@@ -71,23 +73,25 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table table-striped" id="table">
-								<thead>
+							<table class="table" id="table1">
+								<thead class=" text-primary">
 									<tr>
 										<th>Foto</th>
 										<th>Nome</th>
 										<th>Ação</th>
 									</tr>
 								</thead>
-								#{list items: disciplinas.professor, as:'professor'}
+								
 									<tbody>
+									#{list items: disciplinas.professor, as:'professor'}
 			                            <tr>
 			                            	<td><img class="img-default" src="@{Professores.fotoProfessor(professor.id)}"></td>
 			                                <td>${professor?.nome}</td>
 			                                <td><a href="@{Professores.detalhesProfessor(professor.id)}"><i class="material-icons">visibility</i></a></td>
 			                            </tr>
+			                            #{/list}
 			                        </tbody>
-								#{/list}
+								
 								#{else}
 								<p>Turma sem Professores Vínculados</p>
 								#{/else}
